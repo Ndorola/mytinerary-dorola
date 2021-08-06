@@ -1,36 +1,87 @@
+/* fuentes */
+  /* font-family: 'Source Sans Pro', sans-serif; */
+    /* font-family: 'Archivo Black', sans-serif; */
+
 html * {
     margin: 0;
     padding: 0;
     box-sizing: border-box
 }
 
-div.caja {
-    width: 100%;
-    height: 100vh;
-    background-color: orangered;
-    color: white;
-    display: flex;
-    flex-direction: column;
+.hero {
+    /* display: flex;
+    flex-direction: column; */
     justify-content: space-between;
+    align-items: flex-start;
+    width: 100vw;
+    min-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 30% 45%;
 }
 
-header {
+.container {
+    display: flex;
+    justify-content: space-between;
     width: 100%;
-    padding: 2vh 5vw;
-    background-color: wheat;
-    color: orangered;
-    text-align: center;
 }
-div.texto {
-    color: wheat;
+
+nav {
+    display: flex;
+    min-height: 10vh;
+    width: 30%;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 2.5%;
+}
+
+nav#navBar {
+    margin-left: 5%;
+    margin-top: 2vh;
+
+}
+
+nav#icon {
+    padding-left: 18%;
+}
+
+nav a {
+    font-family: 'Source Sans Pro', sans-serif;
+    text-decoration: none;
+    color: white;
+}
+
+img#user {
+    height: 10vh;
+    margin-top: 2vh;
+}
+
+.boxTitle {
+    display: flex;
     justify-content: center;
-    text-align: center
+    align-items: center;
+    height: 80%;
 }
 
-footer {
-    width: 100%;
-    padding: 1vh 5vw;
-    background-color: wheat;
-    color: orangered;
-    text-align: center;
+.title {
+    width: 35vw;
+    margin-bottom: 7%;
 }
+
+img#plane {
+    margin-top: 12%;
+    width: 90%;
+    margin-left: 15%;
+}
+
+img#user {
+    margin-right: 5vw;
+}
+
+.title h4 {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
+    font-size: 1.3rem;
+    width: 80%
+}
+
