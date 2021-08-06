@@ -9,8 +9,6 @@ html * {
 }
 
 .hero {
-    /* display: flex;
-    flex-direction: column; */
     justify-content: space-between;
     align-items: flex-start;
     width: 100vw;
@@ -20,7 +18,17 @@ html * {
     background-position: 30% 45%;
 }
 
-.container {
+.buttonSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    min-height: 95vh;
+    margin-left: 3%;
+}
+
+.containerHeader {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -85,3 +93,40 @@ img#user {
     width: 80%
 }
 
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 42vh;
+    width: 25vw;
+    margin-right: 8%;
+    margin-bottom: 8%;
+}
+
+.buttonContainer h4 {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: rgb(238, 42, 132);
+    font-size: 1.3rem;
+    width: 80%
+}
+
+.buttonContainer h2 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 2.5rem;
+    color: rgb(245, 153, 0);
+}
+
+.buttonContainer button {
+    width: 45%;
+    background: rgb(255,178,41);
+    background: linear-gradient(90deg, rgba(255,178,41,1) 0%, rgba(238,42,132,1) 100%);
+    color: white;
+    border-radius: 70px;
+    text-decoration: none;
+    border: none;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 1rem;
+    margin: 4px 2px;
+
+}
