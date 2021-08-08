@@ -2,8 +2,7 @@ import "./App.css"
 import Home from "./pages/Home"
 import Cities from "./pages/Cities"
 import NotFound from "./pages/NotFound"
-
-import {BrowserRouter, Redirect, Route, Switch} from "react-router-dom"
+import {BrowserRouter, Redirect, Route, Switch,} from "react-router-dom"
 
 const App = () => {
   return (
@@ -15,8 +14,6 @@ const App = () => {
           <Redirect to="/NotFound"/>
         </Switch>
       </BrowserRouter>
-
-    
   )
 }
 

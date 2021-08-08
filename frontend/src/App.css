@@ -3,15 +3,15 @@
     /* font-family: 'Archivo Black', sans-serif; */
 
 html * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box
+    margin: 0 ; 
+    padding: 0 ;
+    box-sizing: border-box 
 }
 
 .hero {
     justify-content: space-between;
     align-items: flex-start;
-    width: 100vw;
+    width: 100%;
     min-height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
@@ -23,7 +23,6 @@ html * {
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
-    width: 100%;
     min-height: 95vh;
     margin-left: 3%;
 }
@@ -76,10 +75,8 @@ img#user {
     margin-bottom: 7%;
 }
 
-img#plane {
-    margin-top: 12%;
-    width: 90%;
-    margin-left: 15%;
+img#heroImg {
+    margin-top: 8%;
 }
 
 img#user {
@@ -110,11 +107,20 @@ img#user {
     width: 80%
 }
 
-.buttonContainer h2 {
+.buttonContainer h2, .boxCarrousel h2{
     font-family: 'Archivo Black', sans-serif;
     font-size: 2.5rem;
     color: rgb(245, 153, 0);
 }
+
+
+
+.boxCarrousel h2 {
+    text-align: center;
+    width: 50%;
+    margin-top: 10vh;
+}
+
 
 .buttonContainer button {
     width: 45%;
@@ -130,3 +136,109 @@ img#user {
     margin: 4px 2px;
 
 }
+
+.carrouselSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5vh 0;
+    height: 80vh;
+}
+
+.titleSlider {
+    text-align: center;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.5rem;
+    color: rgb(245, 153, 0);
+    
+}
+
+.boxSlider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: auto;
+    flex-wrap: wrap;
+    
+}
+
+.sliderImage {
+    background: transparent;
+    margin-bottom: 5vh;
+    position: relative;
+    width: 20vw;
+    height: 35vh;
+    margin: 1vh;
+    border-radius: 5px;
+    transition: all .3s ease;
+}
+
+.carousel-control-prev {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25%;
+    margin-top: 15%;
+    width:5vw;
+    height: 10vh;
+    border-radius: 100% 100%;
+    background: rgb(255,178,41);
+    background: linear-gradient(90deg, rgba(255,178,41,1) 0%, rgba(238,42,132,1) 100%);
+}
+
+.carousel-control-next {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 25%;
+    margin-top: 15%;
+    width:5vw;
+    height: 10vh;
+    border-radius: 100% 100%;
+    background: linear-gradient(90deg, rgba(255,178,41,1) 0%, rgba(238,42,132,1) 100%);
+}
+
+.mainFooter {
+    display: flex;
+    flex-direction: column;
+    bottom: 0;
+    background: linear-gradient(90deg, rgba(255,178,41,1) 0%, rgba(238,42,132,1) 100%);
+    height: 20vh;
+    width: 100%;
+    
+    
+}
+
+.boxFooter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+
+}
+
+.allRightReserves {
+    text-align: center;
+    color: white;
+}
+
+.linksFooter {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80VW;
+}
+
+.imgError {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.imgError img {
+    width: 95%;
+}
+

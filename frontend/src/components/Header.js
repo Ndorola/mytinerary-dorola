@@ -7,7 +7,7 @@ const Header = () => {
             <div className="hero" style={{backgroundImage: "url('/assets/hero.png')"}}>
                 <div className="containerHeader">
                     <nav id="navBar">
-                        <NavLink to = "/"><p>HOME</p></NavLink>
+                        <NavLink exact to = "/"><p>HOME</p></NavLink>
                         <NavLink to = "/CITIES"><p>CITIES</p></NavLink>
                         <NavLink to = "/LOGIN"><p>LOGIN</p></NavLink>
                         <NavLink to = "/LOGOUT"><p>LOGOUT</p></NavLink>
@@ -20,7 +20,7 @@ const Header = () => {
                         <h4>Find your perfect trip, designed by insiders who know and love their cities!</h4>
                     </div>
                     <div>
-                        <img id="plane" src="/assets/avion1.png" alt="plane"></img>
+                        <img id="heroImg" src="/assets/travel.png" alt="plane"></img>
                     </div>
                 </div>   
             </div>
