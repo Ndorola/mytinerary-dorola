@@ -142,8 +142,9 @@ img#user {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 5vh 0;
-    height: 80vh;
+    /* padding: 5vh 0; */
+    height: 90vh;
+    
 }
 
 .titleSlider {
@@ -151,6 +152,7 @@ img#user {
     font-family: 'Archivo Black', sans-serif;
     font-size: 1.5rem;
     color: rgb(245, 153, 0);
+    margin-top: 4%;
     
 }
 
@@ -158,29 +160,36 @@ img#user {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40vw;
-    height: auto;
+    width: 60vw;
     flex-wrap: wrap;
     
 }
 
 .sliderImage {
-    background: transparent;
-    margin-bottom: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-bottom: 5vh; */
     position: relative;
     width: 20vw;
     height: 35vh;
     margin: 1vh;
     border-radius: 5px;
-    transition: all .3s ease;
+    transition: 1.5s;
 }
 
-.carousel-control-prev {
+.sliderImage p {
+    color: white;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.3rem;
+}
+
+.carousel-control-prev, .carousel-control-next {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 25%;
-    margin-top: 15%;
+    margin-left: 20%;
+    margin-top: 16%;
     width:5vw;
     height: 10vh;
     border-radius: 100% 100%;
@@ -189,15 +198,7 @@ img#user {
 }
 
 .carousel-control-next {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 25%;
-    margin-top: 15%;
-    width:5vw;
-    height: 10vh;
-    border-radius: 100% 100%;
-    background: linear-gradient(90deg, rgba(255,178,41,1) 0%, rgba(238,42,132,1) 100%);
+    margin-right: 20%;
 }
 
 .mainFooter {

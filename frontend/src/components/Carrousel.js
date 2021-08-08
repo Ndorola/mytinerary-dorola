@@ -5,7 +5,7 @@ import {
   CarouselItem,
   CarouselControl,
   CarouselIndicators,
-  CarouselCaption
+  // CarouselCaption
 } from 'reactstrap';
 
 const items = [
@@ -68,24 +68,15 @@ const Carrousel = (props) => {
 
         <div className="carrouselSection">
           <div className="boxSlider">
-            {item.imagencita.map((item => (
-              <div key={item.citie} className="sliderImage" style={{backgroundImage: `url("/assets/${item.img}")`}}
-              > <p className="Ciudades">{item.citie}</p> 
-                  </div>
-            )))}
-                  </div>
+          {item.imagencita.map((item => (
+          <div className="sliderImage"  key={item.citie} style={{backgroundImage: `url("/assets/${item.img}")`}}
+          > <p>{item.citie}</p> 
+              </div>
+        )))}
+              </div>
           </div>
-
-
-
-        {/* <div className="carrouselSection">
-          <div className="boxSlider">
-            {item.imagencita.map((slide => 
-              (<div className="sliderImage" style={{backgroundImage:`url('/assets/${slide.img}')`}}></div>)))}
-          </div>
-        </div> */}
         
-          <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
+          {/* <CarouselCaption captionText={item.caption} captionHeader={item.caption} /> */}
         </CarouselItem>
       
     );

@@ -12,9 +12,9 @@ const Footer = () => {
                         <NavLink to = "/LOGIN"><p>LOGIN</p></NavLink>
                         <NavLink to = "/LOGOUT"><p>LOGOUT</p></NavLink>
                         <div className="socialMedia">
-                            <Link to="/NotFound"><img src='/assets/instagram.png'></img></Link>
-                            <Link to="/NotFound"><img src='/assets/facebook.png'></img></Link>
-                            <Link to="/NotFound"><img src='/assets/mail.png'></img></Link>
+                            <Link to="/NotFound"><img src='/assets/instagram.png' alt="instagram"></img></Link>
+                            <Link to="/NotFound"><img src='/assets/facebook.png' alt="facebook"></img></Link>
+                            <Link to="/NotFound"><img src='/assets/mail.png' alt="mail"></img></Link>
                         </div>
                     </nav>
                 </div>
