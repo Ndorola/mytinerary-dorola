@@ -19,7 +19,7 @@ const Header = () => {
                         <img id="logo" src="/assets/logo.png" alt="logo"></img>
                         <h4>Find your perfect trip, designed by insiders who know and love their cities!</h4>
                     </div>
-                    <div>
+                    <div className="boxHeroImg">
                         <img id="heroImg" src="/assets/travel.png" alt="plane"></img>
                     </div>
                 </div>   
