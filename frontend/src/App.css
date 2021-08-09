@@ -12,6 +12,8 @@ html * {
     min-height: 100vh;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero {
@@ -83,7 +85,7 @@ img#user {
 .title h4 {
     font-family: 'Source Sans Pro', sans-serif;
     color: white;
-    font-size: 1rem;
+    font-size: 1.3rem;
     width: 80%
 }
 
@@ -107,6 +109,7 @@ img#user {
     margin-right: 2%;
     margin-left: 6%;
     margin-bottom: 15%;
+    
 }
 
 .buttonContainer h4 {
@@ -140,6 +143,7 @@ img#user {
     text-align: center;
     font-size: 1rem;
     margin: 4px 2px;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.363);
 
 }
 
@@ -159,13 +163,19 @@ img#user {
 }
 
 .titleSlider {
+    align-self: center;
     text-align: center;
-    font-family: 'Archivo Black', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
+    text-transform: uppercase;
     font-size: 1.5rem;
-    color: rgb(245, 153, 0);
+    color: white;
     margin-top: 4%;
     order: 3;
-    width: 100%;
+    width: 25%;
+    padding: 1% 1%;
+    border-radius: 70px;
+    background: linear-gradient(90deg, rgba(255,178,41,1) 0%, rgba(238,42,132,1) 100%);
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.363);
 }
 
 .boxSlider {
@@ -189,13 +199,15 @@ img#user {
     margin: 1vh;
     border-radius: 5px;
     transition: 1.5s;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.363);
     
 }
 
 .sliderImage p {
     color: white;
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: 1.3rem;
+    font-size: 1.8rem;
+    text-shadow: 3px 3px 4px rgb(0, 0, 0);    
 }
 
 .carousel-control-prev, .carousel-control-next {
@@ -217,8 +229,7 @@ img#user {
 
 .mainFooter {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     bottom: 0;
     background: linear-gradient(90deg, rgba(255,178,41,1) 0%, rgba(238,42,132,1) 100%);
@@ -229,7 +240,7 @@ img#user {
 
 .boxFooter {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 100%;
 }
@@ -237,8 +248,7 @@ img#user {
 .allRightReserves {
     text-align: center;
     color: white;
-    width: 100%;
-    margin-bottom: 1%;
+    width: 50vw;
 }
 
 nav#linksFooter {
@@ -275,12 +285,14 @@ nav#linksFooter {
 
     .mainBox {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+        width: 100%;
     }
     
     .hero {
-        min-width: 50vw;
+        min-width: 100%;
     }
     
     .containerHeader {
@@ -292,42 +304,54 @@ nav#linksFooter {
     }
 
     .boxTitle {
+        display: flex;
+        flex-wrap: wrap;
         width: 100%;
-        height: 80%;
     }
     
     .title {
-        width: 45vw;
-        margin-bottom: 15%;
+        display: flex;
+        flex-wrap: wrap;
+        align-self: flex-end;
+        width: 80vw;
+        height: auto;
     }
     
     img#logo {
-        width: 40vw;
+        width: 80vw;
+        padding-top: 6%;
     }
 
     img#heroImg {
-        width: 40vw;
-    }
-    
-    img#user {
-        /* margin-right: 5vw; */
+        width: 70vw;
+        align-self: flex-start;
     }
     
     .title h4 {
-        font-size: 0.9rem;
+        font-size: 1.2rem;
         width: 100%;
     }
 
     .buttonSection {
         margin-left: 0%;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap-reverse;
+        justify-content: center;
+        align-items: center;
     }
 
     .buttonSection img {
-        width: 60vw;
-        align-self: flex-start;
+        width: 80vw;
+        height: auto;
+        margin-left: 4%;
+        padding-bottom: 10%;
     }
 
     .buttonContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 20vw;
         height: 30vh;
         padding-top: 10%;
@@ -335,19 +359,25 @@ nav#linksFooter {
     
     .buttonContainer h4 {
         font-size: 1rem;
-        width: 100%;
-        padding-bottom: 5%;
+        width: 75vw;
+        text-align: center;
+        padding-bottom: 2%;
     }
     
-    .buttonContainer h2, .boxCarrousel h2{
-        font-size: 1.5rem;
-        padding-bottom: 5%;
+    .buttonContainer h2 {
+        text-align: center;
+        font-size: 1.3rem;
+        padding-bottom: 2%;
+        width: 55vw;
     }
 
     .buttonContainer button {
-        width: 50%;
-        padding: .5rem .5rem;
-        font-size: .8em;
+        width: 100%;
+        border-radius: 100px;
+        padding: 8px 10px;
+        text-align: center;
+        font-size: .8rem;
+        margin: 6px 4px;
     }
     
     .boxCarrousel h2 {
@@ -367,6 +397,7 @@ nav#linksFooter {
     }
     
     .titleSlider {
+        width: 80%;
         margin-top: 4%;
         margin-bottom: 2%;
         font-size: 1.3rem;
@@ -377,47 +408,208 @@ nav#linksFooter {
     }
     
     .sliderImage {
-        width: 30vw;
-        height: 35vh;
+        width: 50vw;
+        height: 50vh;
     }
     
     .sliderImage p {
-        /* color: white;
-        font-family: 'Source Sans Pro', sans-serif;
-        font-size: 1.3rem; */
+        font-size: 1.5rem;
     }
     
     .carousel-control-prev, .carousel-control-next {
-        margin-left: 6%;
-        margin-top: 28%;
-        width:8vw;
-        height: 9vh;
-    }
-    
-    .carousel-control-next {
-        margin-right: 6%;
+       display: none;
     }
     
     .mainFooter {
-
+        background-color: rgb(245, 153, 0);
     }
     
     .boxFooter {
-    
+        display: flex;
+        flex-wrap: wrap-reverse;
+        width: 100%;
     }
     
     .allRightReserves {
-        /* text-align: center;
-        color: white;
-        width: 100%; */
+        width: 100vw;
+        font-size: 0.8rem;
     }
     
-    .linksFooter {
-        /* display: flex;
-        justify-content: space-around;
-        align-items: center;
-        width: 100%; */
+    nav#linksFooter {
+        width: 100%;
+        font-size: 0.9rem;
+    
     }
     
+    .socialMedia {
+        margin-top: 2%;
+        display: flex;
+    }
 
+    .socialMedia img {
+        width: 10vw;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .mainBox > *{
+        order: 0;
+    }
+
+    .mainBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .hero {
+        min-width: 100%;
+    }
+    
+    .containerHeader {
+        width: 100%;
+    }
+    
+    nav {
+        width: 45%;
+    }
+
+    .boxTitle {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    
+    .title {
+        display: flex;
+        flex-wrap: wrap;
+        align-self: flex-end;
+        width: 80vw;
+        height: auto;
+    }
+    
+    img#logo {
+        width: 80vw;
+        padding-top: 6%;
+    }
+
+    img#heroImg {
+        width: 70vw;
+        align-self: flex-start;
+    }
+    
+    .title h4 {
+        text-align: center;
+        font-size: 1.6rem;
+        width: 100%;
+    }
+
+    .buttonSection {
+        margin-left: 0%;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .buttonSection img {
+        width: 90vw;
+        height: auto;
+        margin-left: 4%;
+        padding-bottom: 10%;
+    }
+
+    .buttonContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20vw;
+        height: 30vh;
+        padding-top: 10%;
+    }
+    
+    .buttonContainer h4 {
+        font-size: 1.6rem;
+        width: 75vw;
+        text-align: center;
+        padding-bottom: 2%;
+    }
+    
+    .buttonContainer h2 {
+        text-align: center;
+        font-size: 2.3rem;
+        padding-bottom: 2%;
+        width: 80vw;
+    }
+
+    .buttonContainer button {
+        width: 100%;
+        border-radius: 100px;
+        padding: 8px 10px;
+        text-align: center;
+        font-size: 1.3rem;
+        margin: 6px 4px;
+    }
+
+    .carrouselSection {
+        height: auto;
+        margin-bottom: 4%;
+    }
+    
+    .titleSlider {
+        width: 55%;
+        margin-top: 4%;
+        margin-bottom: 2%;
+        font-size: 1.8rem;
+    }
+    
+    .boxSlider {
+        width: 80vw;
+    }
+    
+    .sliderImage {
+        width: 35vw;
+        height: 40vh;
+    }
+    
+    .sliderImage p {
+        font-size: 2rem;
+    }
+    
+    .carousel-control-prev, .carousel-control-next {
+        display: none;
+    }
+    
+    .mainFooter {
+        background-color: rgb(245, 153, 0);
+    }
+    
+    .boxFooter {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .allRightReserves {
+        width: 100vw;
+        font-size: 1.3rem;
+    }
+    
+    nav#linksFooter {
+        width: 100vw;
+        font-size: 1.3rem;
+    }
+    
+    .socialMedia {
+        margin-top: 2%;
+        display: flex;
+    }
+
+    .socialMedia img {
+        width: 10vw;
+    }
 }
