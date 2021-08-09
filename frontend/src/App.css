@@ -1,6 +1,6 @@
 /* fuentes */
-  /* font-family: 'Source Sans Pro', sans-serif; */
-    /* font-family: 'Archivo Black', sans-serif; */
+/* font-family: 'Source Sans Pro', sans-serif; */
+/* font-family: 'Archivo Black', sans-serif; */
 
 html * {
     margin: 0 ; 
@@ -19,7 +19,7 @@ html * {
 .hero {
     justify-content: space-between;
     align-items: flex-start;
-    flex: 1 1 100%; 
+    flex: 100%; 
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 30% 45%;
@@ -29,15 +29,15 @@ html * {
 .containerHeader {
     display: flex;
     justify-content: space-between;
-    flex: 1 1 100%;
+    flex: 100%;
 }
 
 nav {
     display: flex;
-    min-height: 10vh;
-    width: 30%;
     align-items: center;
     justify-content: space-between;
+    min-height: 10vh;
+    width: 30%;
     padding-left: 2.5%;
 }
 
@@ -127,7 +127,7 @@ img#user {
 
 .boxCarrousel h2 {
     text-align: center;
-    flex: 1 1 100%;
+    flex: 100%;
     margin-top: 10vh;
 }
 
@@ -148,16 +148,17 @@ img#user {
 }
 
 .mainCarrousel {
+    display: flex;
+    flex-direction: column-reverse;
     order: 4;
-    flex: 1 1 100%;
+    flex: 100%;
 }
-/* fijarme de unificar */
+
 .carrouselSection {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* padding: 5vh 0; */
     height: 90vh;
     
 }
@@ -184,15 +185,12 @@ img#user {
     align-items: center;
     width: 60vw;
     flex-wrap: wrap;
-    
-    
 }
 
 .sliderImage {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* margin-bottom: 5vh; */
     position: relative;
     width: 20vw;
     height: 35vh;
@@ -200,7 +198,6 @@ img#user {
     border-radius: 5px;
     transition: 1.5s;
     box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.363);
-    
 }
 
 .sliderImage p {
@@ -256,7 +253,6 @@ nav#linksFooter {
     justify-content: space-around;
     align-items: center;
     width: 20vw;
-    
 }
 
 .socialMedia {
@@ -379,17 +375,6 @@ nav#linksFooter {
         font-size: .8rem;
         margin: 6px 4px;
     }
-    
-    .boxCarrousel h2 {
-        /* text-align: center;
-        flex: 1 1 100%;
-        margin-top: 10vh; */
-    }
-    
-    .mainCarrousel {
-        /* order: 4;
-        flex: 1 1 100%; */
-    }
 
     .carrouselSection {
         height: auto;
@@ -417,7 +402,7 @@ nav#linksFooter {
     }
     
     .carousel-control-prev, .carousel-control-next {
-       display: none;
+        display: none;
     }
     
     .mainFooter {
@@ -474,7 +459,7 @@ nav#linksFooter {
     }
     
     nav {
-        width: 45%;
+        width: 65%;
     }
 
     .boxTitle {

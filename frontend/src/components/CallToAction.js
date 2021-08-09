@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom"
+import {NavLink} from "react-router-dom"
 
 const CallToAction = () => {
 
@@ -9,7 +9,7 @@ const CallToAction = () => {
                 <div className="buttonContainer">
                     <h2>What are you waiting for?</h2>
                     <h4>Feel free to check our itineraries and activities!</h4>
-                    <Link to="/Cities"><button>GO THERE!</button></Link>
+                    <NavLink to="/Cities"><button>GO THERE!</button></NavLink>
                 </div>
             </div>
         </>

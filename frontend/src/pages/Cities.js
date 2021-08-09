@@ -9,7 +9,5 @@ export default class Cities extends React.Component {
                 <h1>Proximamente Cities</h1>
             </div>
         )
-                
-        
     }
 }

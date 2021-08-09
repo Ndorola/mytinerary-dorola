@@ -5,12 +5,11 @@ import {
   CarouselItem,
   CarouselControl,
   CarouselIndicators,
-  // CarouselCaption
 } from 'reactstrap';
 
 const items = [
   {
-    imagencita: [
+    images: [
       {img: 'bangkok.png', citie: 'Bangkok'},
       {img: 'london.png', citie: 'London'},
       {img: 'paris.png', citie: 'Paris'},
@@ -18,7 +17,7 @@ const items = [
     ]
   },
   {
-    imagencita: [
+    images: [
       {img: 'iguazu.png', citie: 'Puerto Iguazú'},
       {img: 'cafayate.png', citie: 'Cafayate'},
       {img: 'calafate.png', citie: 'Calafate'},
@@ -26,7 +25,7 @@ const items = [
     ]
   },
   {
-    imagencita: [
+    images: [
       {img: 'rioDeJaneiro.png', citie: 'Rio de Janeiro'},
       {img: 'roma.png', citie: 'Rome'},
       {img: 'newYork.png', citie: 'New York'},
@@ -68,15 +67,14 @@ const Slides = (props) => {
 
         <div className="carrouselSection">
           <div className="boxSlider">
-          {item.imagencita.map((item => (
-          <div className="sliderImage"  key={item.citie} style={{backgroundImage: `url("/assets/${item.img}")`}}
-          > <p>{item.citie}</p> 
+          {item.images.map((image => (
+          <div className="sliderImage"  key={image.citie} style={{backgroundImage: `url("/assets/${image.img}")`}}
+          > <p>{image.citie}</p> 
               </div>
         )))}
               </div>
           </div>
-        
-          {/* <CarouselCaption captionText={item.caption} captionHeader={item.caption} /> */}
+          
         </CarouselItem>
       
     );

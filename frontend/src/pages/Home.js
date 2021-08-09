@@ -10,10 +10,9 @@ export default class Home extends React.Component {
             <div className = "mainBox" >
                 <Header/>
                 <CallToAction/>
-                <h2 className="titleSlider">Popular myTineraries</h2>
                 <Carrousel/>
                 <Footer/>
-        </div>
+            </div>
         ) 
     }
 }
