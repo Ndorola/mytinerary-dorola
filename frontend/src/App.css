@@ -108,8 +108,7 @@ img#user {
     flex: 1 1 100%;
     margin-right: 2%;
     margin-left: 6%;
-    margin-bottom: 15%;
-    
+    margin-bottom: 15%;    
 }
 
 .buttonContainer h4 {
@@ -272,6 +271,170 @@ nav#linksFooter {
 
 .imgError img {
     width: 95%;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .mainBox > *{
+        order: 0;
+    }
+
+    .mainBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .hero {
+        min-width: 100%;
+    }
+    
+    .containerHeader {
+        width: 100%;
+    }
+    
+    nav {
+        width: 65%;
+    }
+
+    .boxTitle {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    
+    .title {
+        display: flex;
+        flex-wrap: wrap;
+        align-self: flex-end;
+        width: 80vw;
+        height: auto;
+    }
+    
+    img#logo {
+        width: 80vw;
+        padding-top: 6%;
+    }
+
+    img#heroImg {
+        width: 70vw;
+        align-self: flex-start;
+    }
+    
+    .title h4 {
+        text-align: center;
+        font-size: 1.6rem;
+        width: 100%;
+    }
+
+    .buttonSection {
+        margin-left: 0%;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .buttonSection img {
+        width: 90vw;
+        height: auto;
+        margin-left: 4%;
+        padding-bottom: 10%;
+    }
+
+    .buttonContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20vw;
+        height: 30vh;
+        padding-top: 10%;
+    }
+    
+    .buttonContainer h4 {
+        font-size: 1.6rem;
+        width: 75vw;
+        text-align: center;
+        padding-bottom: 2%;
+    }
+    
+    .buttonContainer h2 {
+        text-align: center;
+        font-size: 2.3rem;
+        padding-bottom: 2%;
+        width: 80vw;
+    }
+
+    .buttonContainer button {
+        width: 100%;
+        border-radius: 100px;
+        padding: 8px 10px;
+        text-align: center;
+        font-size: 1.3rem;
+        margin: 6px 4px;
+    }
+
+    .carrouselSection {
+        height: auto;
+        margin-bottom: 4%;
+    }
+    
+    .titleSlider {
+        width: 55%;
+        margin-top: 4%;
+        margin-bottom: 2%;
+        font-size: 1.8rem;
+    }
+    
+    .boxSlider {
+        width: 80vw;
+    }
+    
+    .sliderImage {
+        width: 35vw;
+        height: 40vh;
+    }
+    
+    .sliderImage p {
+        font-size: 2rem;
+    }
+    
+    .carousel-control-prev, .carousel-control-next {
+        display: none;
+    }
+    
+    .mainFooter {
+        background-color: rgb(245, 153, 0);
+    }
+    
+    .boxFooter {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .allRightReserves {
+        width: 100vw;
+        font-size: 1.3rem;
+    }
+    
+    nav#linksFooter {
+        width: 100vw;
+        font-size: 1.3rem;
+    }
+    
+    .socialMedia {
+        margin-top: 2%;
+        display: flex;
+    }
+
+    .socialMedia img {
+        width: 10vw;
+    }
 }
 
 @media screen and (max-width: 575px) {
@@ -437,164 +600,43 @@ nav#linksFooter {
 
 }
 
-@media screen and (max-width: 768px) {
-    .mainBox > *{
-        order: 0;
-    }
+/* CITIES */
+.mainCities {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
 
-    .mainBox {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-    }
-    
-    .hero {
-        min-width: 100%;
-    }
-    
-    .containerHeader {
-        width: 100%;
-    }
-    
-    nav {
-        width: 65%;
-    }
+.headerCities {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    top: 0;
+    background: linear-gradient(90deg, rgba(255,178,41,1) 0%, rgba(238,42,132,1) 100%);
+    height: 55vh;
+    width: 100%;
+    order: 1;
+}
 
-    .boxTitle {
-        display: flex;
-        flex-wrap: wrap;
-        width: 100%;
-    }
-    
-    .title {
-        display: flex;
-        flex-wrap: wrap;
-        align-self: flex-end;
-        width: 80vw;
-        height: auto;
-    }
-    
-    img#logo {
-        width: 80vw;
-        padding-top: 6%;
-    }
+.citiesBox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding-top: 4%;
+    padding-bottom: 4%;
+}
 
-    img#heroImg {
-        width: 70vw;
-        align-self: flex-start;
-    }
-    
-    .title h4 {
-        text-align: center;
-        font-size: 1.6rem;
-        width: 100%;
-    }
+.photoGrid {
+    width: 85%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background-repeat: no-repeat;
+    background-position: 50% 35%;
+    height: 50vh;
+    transition: height 1s ease 0s;
+}
 
-    .buttonSection {
-        margin-left: 0%;
-        height: auto;
-        display: flex;
-        flex-wrap: wrap-reverse;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .buttonSection img {
-        width: 90vw;
-        height: auto;
-        margin-left: 4%;
-        padding-bottom: 10%;
-    }
-
-    .buttonContainer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 20vw;
-        height: 30vh;
-        padding-top: 10%;
-    }
-    
-    .buttonContainer h4 {
-        font-size: 1.6rem;
-        width: 75vw;
-        text-align: center;
-        padding-bottom: 2%;
-    }
-    
-    .buttonContainer h2 {
-        text-align: center;
-        font-size: 2.3rem;
-        padding-bottom: 2%;
-        width: 80vw;
-    }
-
-    .buttonContainer button {
-        width: 100%;
-        border-radius: 100px;
-        padding: 8px 10px;
-        text-align: center;
-        font-size: 1.3rem;
-        margin: 6px 4px;
-    }
-
-    .carrouselSection {
-        height: auto;
-        margin-bottom: 4%;
-    }
-    
-    .titleSlider {
-        width: 55%;
-        margin-top: 4%;
-        margin-bottom: 2%;
-        font-size: 1.8rem;
-    }
-    
-    .boxSlider {
-        width: 80vw;
-    }
-    
-    .sliderImage {
-        width: 35vw;
-        height: 40vh;
-    }
-    
-    .sliderImage p {
-        font-size: 2rem;
-    }
-    
-    .carousel-control-prev, .carousel-control-next {
-        display: none;
-    }
-    
-    .mainFooter {
-        background-color: rgb(245, 153, 0);
-    }
-    
-    .boxFooter {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-    }
-    
-    .allRightReserves {
-        width: 100vw;
-        font-size: 1.3rem;
-    }
-    
-    nav#linksFooter {
-        width: 100vw;
-        font-size: 1.3rem;
-    }
-    
-    .socialMedia {
-        margin-top: 2%;
-        display: flex;
-    }
-
-    .socialMedia img {
-        width: 10vw;
-    }
+.photoGrid:hover {
+    height: 60vh;
 }

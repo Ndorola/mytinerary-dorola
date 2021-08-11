@@ -70,7 +70,7 @@ const Slides = (props) => {
           {item.images.map((image => (
           <div className="sliderImage"  key={image.citie} style={{backgroundImage: `url("/assets/${image.img}")`}}
           > <p>{image.citie}</p> 
-              </div>
+          </div>
         )))}
               </div>
           </div>
