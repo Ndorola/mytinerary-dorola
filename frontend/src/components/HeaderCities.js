@@ -4,7 +4,7 @@ const HeaderCities = () => {
 
     return (
         <header>
-                <div className="headerCities" style={{backgroundImage: "url('/assets/HeaderCities.jpg')"}}>
+                <div className="headerCities">
                     <nav id="navBar">
                         <NavLink to = "/"><p>Home</p></NavLink>
                         <NavLink to = "/CITIES"><p>Cities</p></NavLink>
@@ -16,5 +16,5 @@ const HeaderCities = () => {
         </header>
     )
 }
-
+// style={{backgroundImage: "url('/assets/HeaderCities.jpg')"}}
 export default HeaderCities

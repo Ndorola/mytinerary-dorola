@@ -2,7 +2,7 @@ import PhotoGrid from "./PhotoGrid"
 
 const MainCities = () => {
     return (
-            <div className="">
+            <div className="mainCities">
                 <PhotoGrid/>
             </div>
     )

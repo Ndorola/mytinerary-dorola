@@ -230,7 +230,7 @@ img#user {
     bottom: 0;
     background: linear-gradient(90deg, rgba(255,178,41,1) 0%, rgba(238,42,132,1) 100%);
     height: auto;
-    flex: 1 1 100%;
+    width: 100vw;
     order: 5;
 }
 
@@ -238,7 +238,7 @@ img#user {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 95vw;
 }
 
 .allRightReserves {
@@ -604,7 +604,9 @@ nav#linksFooter {
 .mainCities {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
 }
 
 .headerCities {
@@ -613,8 +615,8 @@ nav#linksFooter {
     align-items: flex-start;
     top: 0;
     background: linear-gradient(90deg, rgba(255,178,41,1) 0%, rgba(238,42,132,1) 100%);
-    height: 55vh;
-    width: 100%;
+    height: 50vh;
+    width: 100vw;
     order: 1;
 }
 
@@ -625,18 +627,91 @@ nav#linksFooter {
     align-items: center;
     padding-top: 4%;
     padding-bottom: 4%;
+    width: 80vw;
 }
 
-.photoGrid {
-    width: 85%;
-    margin-top: 2%;
-    margin-bottom: 2%;
+.photoParent {
+    width: 80vw;
+    height: 45vh;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.photoChild {
+    width: 100%;
+    height: 100%;
+    background-color: black; /* fallback color */
+    background-position: center;
+    background-size: cover;
+    transition: all .5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    /* width: 100%;
+    height: 100%;
     background-repeat: no-repeat;
     background-position: 50% 35%;
-    height: 50vh;
-    transition: height 1s ease 0s;
+    transition: height 1s ease 0s; */
 }
 
-.photoGrid:hover {
-    height: 60vh;
+.photoParent:hover .photoChild,
+.photoParent:focus .photoChild {
+    transform: scale(1.05);
+}
+
+.photoChild::before {
+    content: "";
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(243, 232, 229, 0.5);
+}
+
+.photoParent:hover .photoChild:before,
+.photoParent:focus .photoChild:before {
+    display: block;
+}
+
+.photoChild:hover {
+    /* height: 60vh; */
+}
+
+.photoChild h3, .photoChild h4{
+    color: white;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.8rem;
+    text-shadow: 3px 3px 4px rgb(0, 0, 0);
+    /* padding: 25%; */
+} 
+
+.photoChild h4 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.4rem;
+}
+
+.photoParent:hover h3, 
+.photoParent:focus h3 {
+  display: block;
+}
+
+.photoParent:hover h2, 
+.photoParent:focus h2 {
+  display: block;
+}
+
+.boxSearch input{
+    width: 25vw;
+    text-align: center;
+    padding: 1%;
+    border-radius: 8px;
+    border-color: rgba(238, 42, 133, 0.678);
+}
+
+.boxSearch {
+    padding-bottom: 2%;
 }
