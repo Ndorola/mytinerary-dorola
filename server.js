@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors');
-const { default: City } = require('./frontend/src/pages/City');
+// require('dotenv').config()
+// primero dotenv desoues config data base
 
 const app = express()
 
@@ -21,14 +22,15 @@ const cities = [
     {id: "12", img: 'Miami.png', name: 'Miami', description: 'lalalalala'}
 ];
 
-app.get('/cities/data', (req, res) => {
-    console.log("nicole ponete las pilas")
+app.get('/api/cities', (req, res) => {
+    console.log("niqui ponete las pilas")
     res.json({response: cities })
 })
 
-app.get('/city/data:id', (req, res) => {
-    const city = cities.find(city => city.id === parseInt(req.params.id))
+app.get('/api/cities/:id', (req, res) => {
+    const city = cities.find(city => city.id === req.params.id)
     res.json({response: city })
+    console.log(city)
 })
 
 

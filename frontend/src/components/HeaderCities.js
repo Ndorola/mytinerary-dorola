@@ -7,11 +7,11 @@ const HeaderCities = () => {
                 <div className="headerCities">
                     <nav id="navBar">
                         <NavLink to = "/"><p>Home</p></NavLink>
-                        <NavLink to = "/CITIES"><p>Cities</p></NavLink>
-                        <NavLink to = "/LOGIN"><p>Sign up</p></NavLink>
-                        <NavLink to = "/LOGOUT"><p>Log in</p></NavLink>
+                        <NavLink to = "/cities"><p>Cities</p></NavLink>
+                        <NavLink to = "/login"><p>Sign up</p></NavLink>
+                        <NavLink to = "/logout"><p>Log in</p></NavLink>
                     </nav>
-                    <NavLink to = "/USER"><img id="user" src="/assets/iconUser.png" alt="iconUser"></img></NavLink>
+                    <NavLink to = "/user"><img id="user" src="/assets/iconUser.png" alt="iconUser"></img></NavLink>
                 </div>
         </header>
     )

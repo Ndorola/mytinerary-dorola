@@ -1,5 +1,4 @@
-import {useState} from "react";
-import { useEffect } from "react";
+import {useState, useEffect} from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -7,12 +6,12 @@ import { Link } from "react-router-dom";
 const PhotoGrid = () => {
     
     const [cities, setCities] = useState([])
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         setLoading(true)
         axios
-            .get("http://localhost:4000/cities/data")
+            .get("http://localhost:4000/api/cities")
             .then((res) => 
                 setCities(res.data.response))
                 setLoading(false)
@@ -44,7 +43,7 @@ const PhotoGrid = () => {
                 return (
                     city.name.toLowerCase().startsWith(enteredCity.trim().toLowerCase()) && 
 
-                    <Link to={`/City/${city.id}`}>
+                    <Link to={`/city/${city.id}`}>
                         <div className="photoParent" key={city.name} >
                             <div className="photoChild" style={{backgroundImage: `url("/assets/fotos/${city.img}")`}}>
                                 <h3>{city.name}</h3>
