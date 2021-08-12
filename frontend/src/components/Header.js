@@ -8,9 +8,9 @@ const Header = () => {
                 <div className="containerHeader">
                     <nav id="navBar">
                         <NavLink to = "/"><p>Home</p></NavLink>
-                        <NavLink to = "/CITIES"><p>Cities</p></NavLink>
-                        <NavLink to = "/LOGIN"><p>Sign up</p></NavLink>
-                        <NavLink to = "/LOGOUT"><p>Log in</p></NavLink>
+                        <NavLink to = "/Cities"><p>Cities</p></NavLink>
+                        <NavLink to = "/Login"><p>Sign up</p></NavLink>
+                        <NavLink to = "/Logout"><p>Log in</p></NavLink>
                     </nav>
                     <NavLink to = "/USER"><img id="user" src="/assets/iconUser.png" alt="iconUser"></img></NavLink>
                 </div>
