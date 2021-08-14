@@ -22,12 +22,12 @@ const PhotoGrid = () => {
     }
     //poner preloader
 
-    const [enteredCity, setenteredCity] = useState("")
+    const [enterCity, setEnterCity] = useState("")
 
     const captionCity = (e) => {
-        setenteredCity(e.target.value);
+        setEnterCity(e.target.value);
     }
-    // console.log(enteredCity)
+    // console.log(enterCity)
 
     return (
 
@@ -41,7 +41,7 @@ const PhotoGrid = () => {
             {cities.map((city) => {
 
                 return (
-                    city.name.toLowerCase().startsWith(enteredCity.trim().toLowerCase()) && 
+                    city.name.toLowerCase().startsWith(enterCity.trim().toLowerCase()) && 
 
                     <Link to={`/city/${city.id}`}>
                         <div className="photoParent" key={city.name} >
@@ -59,3 +59,4 @@ const PhotoGrid = () => {
     )        
 }
 export default PhotoGrid;
+

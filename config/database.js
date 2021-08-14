@@ -1,13 +1,16 @@
-// const mongoose = require('mongoose')
+const mongoose = require('mongoose')
 
-// mongoose.connect("url" reemplazar password y my first data con mytinerary,  {
-//     useUnfiedTopology: true,
-//     useCreateIndex: true,
-//     useNewUrlParser : true,
-//     useFindAModify: false
-// })
-// .then(() => console.log("Database connected"))
-// .catch((error) => console.log(error))
+mongoose.connect(
+    process.env.MONGODB,
+    {
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+        useNewUrlParser : true,
+        useFindAndModify: false
+    }
+)
+.then(() => console.log("Database connected"))
+.catch((error) => console.log(error))
 
 // en server require('./config/databsee')
 // porque quiero que lo ejecute no quiero que lo guarde 
