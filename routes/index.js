@@ -10,7 +10,8 @@ router
 router
 .route('/cities/:id')
 .get(citiesControllers.getACity)
-// .delete(citiesControllers.borrarInvitados)
+.delete(citiesControllers.deleteCity)
+.put(citiesControllers.modifyCity)
 
 module.exports = router
 

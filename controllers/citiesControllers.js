@@ -19,7 +19,8 @@ const citiesControllers = {
 
     getAllCities: (req, res) => {
         City.find()
-        .then((cities) => res.json({response: cities }))
+        .then((cities) => res.json({success: true, response: cities }))
+        .catch((error) => res.json({succes: false, response: error}))
     },
 
     enterCity: (req, res) => {
@@ -38,19 +39,23 @@ const citiesControllers = {
         })
         cityToEnter.save()
         .then(() => res.json({success: true}))
+        .catch(err => res.json({success: false, error:err }))
     },
 
     getACity: (req, res) => {
-        const city = cities.find(city => city.id === req.params.id)
-        res.json({response: city })
-        console.log(city)
+        City.findOne({_id: req.params.id})
+        .then((city) => res.json({response: city})) 
     },
 
-    // deleteCity: (req, res) => {
-    //     cities = cities.filter(city => city.id !== parseInt(req.params.id)
-    //     )        
-    //     res.json({success: true})
-    // }
+    deleteCity: (req, res) => {
+        City.findOneAndDelete({_id: req.params.id})      
+        .then(() => res.json({success: true}))
+    },
+
+    modifyCity: (req, res) => {
+        City.findOneAndUpdate({_id: req.params.id}, {...req.body})
+        .then(() => res.json({success: true}))
+    }
 }
 
 module.exports = citiesControllers

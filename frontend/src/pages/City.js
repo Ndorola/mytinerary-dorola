@@ -4,11 +4,28 @@ import { useEffect, useState } from "react"
 const City = (props) => {
     const[city, setCity] = useState({})
     console.log(city)
+    const [loading, setLoading] = useState(true)
+
     useEffect(() => {
         axios
             .get(`http://localhost:4000/api/cities/${props.match.params.id}`)
-            .then(res => setCity(res.data.response))
+            .then((res) => {
+                if (res.data.response) {
+                    setCity(res.data.response)
+                } else {
+                    alert(res.data.response)
+                }
+            })
+            .catch((err) => {
+                alert(err)
+            })
+            .finally(() => setLoading(false))
     }, [])
+
+    if (loading) {
+        <h1>Loading...</h1>
+    }
+    
     return (
         <>
             <div style={{
