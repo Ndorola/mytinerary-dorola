@@ -13,8 +13,8 @@ const App = () => {
           <Route exact path="/" component={Home}/>
           <Route path="/cities" component={Cities}/>
           <Route path="/city/:id" component={City}/>
-          <Route path="/NotFound" component={NotFound}/>
-          <Redirect to="/NotFound"/>
+          <Route path="/notfound" component={NotFound}/>
+          <Redirect to="/notfound"/>
         </Switch>
       </BrowserRouter>
   )

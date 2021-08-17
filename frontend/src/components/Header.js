@@ -8,11 +8,11 @@ const Header = () => {
                 <div className="containerHeader">
                     <nav id="navBar">
                         <NavLink to = "/"><p>Home</p></NavLink>
-                        <NavLink to = "/Cities"><p>Cities</p></NavLink>
-                        <NavLink to = "/Login"><p>Sign up</p></NavLink>
-                        <NavLink to = "/Logout"><p>Log in</p></NavLink>
+                        <NavLink to = "/cities"><p>Cities</p></NavLink>
+                        <NavLink to = "/signin"><p>Sign up</p></NavLink>
+                        <NavLink to = "/signout"><p>Log in</p></NavLink>
                     </nav>
-                    <NavLink to = "/USER"><img id="user" src="/assets/iconUser.png" alt="iconUser"></img></NavLink>
+                    <NavLink to = "/user"><img id="user" src="/assets/iconUser.png" alt="iconUser"></img></NavLink>
                 </div>
                 <div className="boxTitle">
                     <div className="title">

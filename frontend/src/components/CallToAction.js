@@ -9,7 +9,7 @@ const CallToAction = () => {
                 <div className="buttonContainer">
                     <h2>What are you waiting for?</h2>
                     <h4>Feel free to check our itineraries and activities!</h4>
-                    <NavLink to="/Cities"><button>GO THERE!</button></NavLink>
+                    <NavLink to="/cities"><button>GO THERE!</button></NavLink>
                 </div>
             </div>
         </>

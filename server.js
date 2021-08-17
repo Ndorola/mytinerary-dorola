@@ -3,7 +3,6 @@ const cors = require('cors')
 const router = require('./routes/index')
 require('dotenv').config()
 require('./config/database')
-// primero dotenv desoues config data base
 
 const app = express()
 

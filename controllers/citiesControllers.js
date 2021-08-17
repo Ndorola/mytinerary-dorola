@@ -1,26 +1,19 @@
+const { response } = require('express')
 const City = require('../models/City')
-
-// const cities = [
-//     {id: "1", img: 'Bangkok.jpg', name: 'Bangkok', description: 'lalalalala'},
-//     {id: "2", img: 'London.png', name: 'London', description: 'lalalalala'},
-//     {id: "3", img: 'Paris.png', name: 'Paris', description: 'lalalalala'},
-//     {id: "4", img: 'Bali.png', name: 'Bali', description: 'lalalalala'},
-//     {id: "5", img: 'Iguazu.png', name: 'Puerto Iguazú', description: 'lalalalala'},
-//     {id: "6", img: 'Cafayate.png', name: 'Cafayate', description: 'lalalalala'},
-//     {id: "7", img: 'Calafate.png', name: 'Calafate', description: 'lalalalala'},
-//     {id: "8", img: 'VillaLaAngostura.png', name: 'Villa la Angostura', description: 'lalalalala'},
-//     {id: "9", img: 'RioDeJaneiro.png', name: 'Rio de Janeiro', description: 'lalalalala'},
-//     {id: "10", img: 'Roma.png', name: 'Rome', description: 'lalalalala'},
-//     {id: "11", img: 'NewYork.png', name: 'New York', description: 'lalalalala'},
-//     {id: "12", img: 'Miami.png', name: 'Miami', description: 'lalalalala'}
-// ];
 
 const citiesControllers = {
 
-    getAllCities: (req, res) => {
-        City.find()
-        .then((cities) => res.json({success: true, response: cities }))
-        .catch((error) => res.json({succes: false, response: error}))
+    getAllCities: async (req, res) => {
+        try {
+            var cities = await City.find()
+            if(cities.length > 0){
+                res.json({success: true, response: cities })
+            } else {
+                throw new Error ("No results found")
+            }
+        } catch (error) {
+            res.json({succes: false, response: error.message})
+        }
     },
 
     enterCity: (req, res) => {
@@ -42,19 +35,43 @@ const citiesControllers = {
         .catch(err => res.json({success: false, error:err }))
     },
 
-    getACity: (req, res) => {
-        City.findOne({_id: req.params.id})
-        .then((city) => res.json({response: city})) 
+    getACity: async (req, res) => {
+        try {
+            var city = await City.findOne({_id: req.params.id})
+            if(city !== null) {
+                res.json({success:true, response: city})
+            } else {
+                throw new Error ("No results found")
+            }
+        } catch (error) {
+            res.json({success:false, response: error.message})
+        }
     },
 
-    deleteCity: (req, res) => {
-        City.findOneAndDelete({_id: req.params.id})      
-        .then(() => res.json({success: true}))
+    deleteCity: async (req, res) => {
+        try {
+            var city = await City.findOneAndDelete({_id: req.params.id})
+            if(city !== null) {
+                res.json({success:true, response: city})
+            } else {
+                throw new Error ("No results found")
+            }
+        } catch (error) {
+            res.json({success:false, response: error.message})
+        }
     },
 
-    modifyCity: (req, res) => {
-        City.findOneAndUpdate({_id: req.params.id}, {...req.body})
-        .then(() => res.json({success: true}))
+    modifyCity: async (req, res) => {
+        try {
+            var city = City.findOneAndUpdate({_id: req.params.id}, {...req.body})
+            if(city !== null) {
+                res.json({success: true})
+            } else {
+                throw new Error ("No results found")
+            }
+        } catch (error) {
+            res.json({success: false, response: error.message})
+        }
     }
 }
 

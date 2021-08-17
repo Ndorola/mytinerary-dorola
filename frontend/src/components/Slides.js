@@ -10,26 +10,26 @@ import {
 const items = [
   {
     images: [
-      {img: 'bangkok.png', citie: 'Bangkok'},
-      {img: 'london.png', citie: 'London'},
-      {img: 'paris.png', citie: 'Paris'},
-      {img: 'bali.png', citie: 'Bali'},
+      {img: 'Bangkok.jpg', citie: 'Bangkok'},
+      {img: 'London.jpg', citie: 'London'},
+      {img: 'Paris.jpg', citie: 'Paris'},
+      {img: 'Bali.jpg', citie: 'Bali'},
     ]
   },
   {
     images: [
-      {img: 'iguazu.png', citie: 'Puerto Iguazú'},
-      {img: 'cafayate.png', citie: 'Cafayate'},
-      {img: 'calafate.png', citie: 'Calafate'},
-      {img: 'villaLaAngostura.png', citie: 'Villa la Angostura'},
+      {img: 'iguazu.jpg', citie: 'Puerto Iguazú'},
+      {img: 'Cafayate.jpg', citie: 'Cafayate'},
+      {img: 'Calafate.jpg', citie: 'Calafate'},
+      {img: 'villaLaAngostura.jpg', citie: 'Villa la Angostura'},
     ]
   },
   {
     images: [
-      {img: 'rioDeJaneiro.png', citie: 'Rio de Janeiro'},
-      {img: 'roma.png', citie: 'Rome'},
-      {img: 'newYork.png', citie: 'New York'},
-      {img: 'miami.png', citie: 'Miami'},
+      {img: 'RioDeJaneiro.jpg', citie: 'Rio de Janeiro'},
+      {img: 'roma.jpg', citie: 'Rome'},
+      {img: 'NewYork.jpg', citie: 'New York'},
+      {img: 'miami.jpg', citie: 'Miami'},
     ]
   }
 ]
@@ -68,7 +68,7 @@ const Slides = (props) => {
         <div className="carrouselSection">
           <div className="boxSlider">
           {item.images.map((image => (
-          <div className="sliderImage"  key={image.citie} style={{backgroundImage: `url("/assets/${image.img}")`}}
+          <div className="sliderImage"  key={image.citie} style={{backgroundImage: `url("/assets/fotos/${image.img}")`}}
           > <p>{image.citie}</p> 
           </div>
         )))}
