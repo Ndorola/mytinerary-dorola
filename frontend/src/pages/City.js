@@ -1,13 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Loader from "../components/Loader";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Swal from 'sweetalert';
 import Footer from "../components/Footer";
+import Itineraries from "../components/Itineraries";
 
 const City = (props) => {
     const[city, setCity] = useState({})
-    console.log(city)
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
@@ -38,13 +38,26 @@ const City = (props) => {
             // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    const [itineraries, setItineraries] = useState([])
+
+    useEffect (() => {
+        axios
+            .get("http://localhost:4000/api/itineraries")
+            .then((res) => 
+                setItineraries(res.data.response))
+            .catch((err) =>
+                console.log(err))
+            .finally(() => 
+                setLoading(false))
+    }, [])
+
     if (loading) {
         <Loader/>
     }
     
     return (
         <>
-            <div classname="mainCity" style={{backgroundImage: `url("/assets/fotos/${city.img}")`,
+            <div className="mainCity" style={{backgroundImage: `url("/assets/fotos/${city.img}")`,
                     backgroundSize: "cover",
                     backgroundPosition: "center"
                 }}>
@@ -61,10 +74,7 @@ const City = (props) => {
                     <h2 className="titleCity">Welcome to {city.name}</h2>
                 </div>
             </div>
-            <div className="sectionCity">
-                <img src="/assets/underConstruction.png"/>
-                <Link to={"/cities"}><button className="btnUnder">Back to cities!</button></Link>
-            </div>
+                <Itineraries itineraries={itineraries}/>
             <Footer/>
         </>
     )

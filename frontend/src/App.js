@@ -4,6 +4,7 @@ import Cities from "./pages/Cities"
 import City from "./pages/City"
 import NotFound from "./pages/NotFound"
 import {BrowserRouter, Redirect, Route, Switch,} from "react-router-dom"
+import Itineraries from "./components/Itineraries"
 
 const App = () => {
 
