@@ -20,10 +20,14 @@ router
 .post(itinerariesControllers.enterItinerary)
 
 router
-.route('/itineraries/:id')
+.route('/itinerary/:id')
 .get(itinerariesControllers.getAItinerary)
 .delete(itinerariesControllers.deleteItinerary)
 .put(itinerariesControllers.modifyItinerary)
+
+router
+.route('/itineraries/:city')
+.get(itinerariesControllers.getItinerariesByCity)
 
 module.exports = router
 

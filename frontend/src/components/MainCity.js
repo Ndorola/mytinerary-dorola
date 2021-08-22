@@ -1,54 +1,50 @@
+import { connect } from "react-redux";
+import itinerariesActions from "../redux/actions/itinerariesAction";
 import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Swal from 'sweetalert';
+import Loader from './Loader'
+import Itinerary from "./Itinerary";
 
 const MainCity = (props) => {
 
-    // const[city, setCity] = useState({})
-    // const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true)
 
-    // useEffect(() => {
-    //     axios
-    //         .get(`http://localhost:4000/api/cities/${props.match.params.id}`)
-    //         .then((response) => {
-    //             if (response.data.success) {
-    //                 setCity(response.data.response)
-    //             } else {
-    //                 console.log(response.data.response)
-    //                 Swal({
-    //                     title:"Ups!",
-    //                     text:"No results found. Try later!",
-    //                     icon:"warning",
-    //                     button:"Ok!"
-    //                 })
-    //             }
-    //         })
-    //         .catch((error) => {
-    //             console.log(error)
-    //             Swal({
-    //                 title:"titulo2",
-    //                 text:"Sorry, there was an unexpected error. Try later!",
-    //                 icon:"warning",
-    //                 button:"Ok!"})
-    //         })
-    //         .finally(() => setLoading(false))
-    //         // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, [])
+    useEffect(() => {
 
-    // const [itineraries, setItineraries] = useState([])
+        if(props.citiesList.lenght === 0) {
+            props.history.push('/cities')
+            console.log('me tengo que redireccionar')
+        }
 
-    // useEffect (() => {
-    //     axios
-    //         .get("http://localhost:4000/api/itineraries")
-    //         .then((res) => 
-    //             setItineraries(res.data.response))
-    //         .catch((err) =>
-    //             console.log(err))
-    //         .finally(() => 
-    //             setLoading(false))
-    // }, [])
+        async function getItineraries() {
+            try{
+                await props.getItineraries()
+            } catch(error) {
+                Swal({
+                    title:"Oops! There was a mistake.",
+                    text:"The link you selected may be broken or the page may have been removed.",
+                    icon:"warning",
+                    button:"Ok!",
+                })
+                props.history.push('/cities')
+                return false
+            }
+            setLoading(false)
+        }
+        getItineraries()
+    }, [])
 
-    // if (loading) {
-    //     <Loader/>
-    // }
+    useEffect(() => {
+        
+    }, [])
+    
+    if (loading) {
+        <Loader/>
+    }
+
+    let itineraries = props.itinerariesList.filter((itinerary) => itinerary.cityId === props.match.params.id)
+    console.log(itineraries)
 
 
     return (
@@ -70,9 +66,19 @@ const MainCity = (props) => {
                     <h2 className="titleCity">Welcome to {props.city.name}</h2>
                 </div>
             </div>
-                {/* <Itineraries itineraries={itineraries}/> */}
+            {itineraries.map((itinerary) => <Itinerary it={itinerary}/>)}
         </>
     )
 }
 
-export default MainCity
+const mapStateToProps = (state) => {
+    return {
+        itinerariesList: state.itineraries.itinerariesList,
+    }
+}
+
+const mapDispatchToProps = {
+    getItineraries: itinerariesActions.getItineraries,
+}
+
+export default connect (mapStateToProps, mapDispatchToProps)(MainCity)

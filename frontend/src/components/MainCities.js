@@ -9,7 +9,6 @@ const MainCities = (props) => {
     
     const [loading, setLoading] = useState(true)
     
-    // console.log(props.searchedCities)
     useEffect(() => {
 
         async function getCities() {
@@ -28,19 +27,6 @@ const MainCities = (props) => {
             setLoading(false)
 
         }
-        // props.getCities()
-        // .then((response) => {
-        //     if(response && response.error) {
-        //         Swal({
-        //             title:"Oops! There was a mistake.",
-        //             text:"The link you selected may be broken or the page may have been removed.",
-        //             icon:"warning",
-        //             button:"Back Home!",
-        //         })
-        //         props.history.push('/')
-        //     }
-        // })
-        // .finally(() => setLoading(false))
         getCities()
     }, [])
 

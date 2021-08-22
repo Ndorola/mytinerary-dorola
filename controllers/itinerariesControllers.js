@@ -26,6 +26,7 @@ const itinerariesControllers = {
             likes: req.body.likes,
             comments: req.body.comments,
             images: req.body.img,
+            cityId: req.body.cityId
         })
         itineraryToEnter.save()
         .then(() => res.json({success: true}))
@@ -36,7 +37,7 @@ const itinerariesControllers = {
         try {
             var itinerary = await Itinerary.findOne({_id: req.params.id})
             if(itinerary !== null) {
-                res.json({success:true, response: city})
+                res.json({success:true, response: itinerary})
             } else {
                 throw new Error ("No results found")
             }
@@ -68,6 +69,16 @@ const itinerariesControllers = {
             }
         } catch (error) {
             res.json({success: false, response: error.message})
+        }
+    },
+
+    getItinerariesByCity: async (req, res) => {
+        const city = req.params.city
+        try {
+            let itineraries = await Itinerary.find({cityId: city})
+            res.json({success: true, response: itineraries})
+        } catch(error) {
+            res.json({success: false, response: "No results found"})
         }
     }
 }

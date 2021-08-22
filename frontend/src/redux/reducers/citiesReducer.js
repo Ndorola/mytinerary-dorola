@@ -21,7 +21,6 @@ const citiesReducer = (state = {citiesList:[], searchedCities:[]}, action) => {
         //         ...state,
         //         city: state.citiesList.find((city) => city._id === props.match.params.id)
         //     }
-
         // case 'MODIFY_CITY':
         // case 'DELETE_CITY':
         // case 'UPDATE-CITY':

@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-// const City = mongoose.model('City')
 
 const itinerarySchema = new mongoose.Schema({
     user: {type: Object, required: true},
