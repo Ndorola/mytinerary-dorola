@@ -1,16 +1,16 @@
-import React from "react"
 import HeaderCities from "../components/HeaderCities"
 import MainCities from "../components/MainCities"
 import Footer from "../components/Footer"
 
-export default class Cities extends React.Component {
-    render() {
+const Cities = (props) => {
+
         return (
             <div className = "mainCities" >
                 <HeaderCities/>
-                <MainCities/>
+                <MainCities {...props}/>
                 <Footer/>
             </div>
         ) 
     }
-}
+
+export default Cities

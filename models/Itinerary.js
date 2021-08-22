@@ -10,7 +10,7 @@ const itinerarySchema = new mongoose.Schema({
     likes: {type: Number},
     comments: {type: Object},
     images: {type: Object},
-    // city: {type: Schema.ObjectId, ref: 'City'}
+    cityId: {type: mongoose.Types.ObjectId, ref: 'city'}
 })
 
 const Itinerary = mongoose.model('itinerary', itinerarySchema)

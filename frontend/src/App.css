@@ -24,7 +24,6 @@ html * {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 30% 45%;
-    order: 1;
 }
 
 .containerHeader {
@@ -108,7 +107,6 @@ img#user {
     height: auto;
     margin-top: 3.5%;
     margin-left: 3%;
-    order: 2;
 }
 
 .buttonContainer {
@@ -155,6 +153,10 @@ img#user {
     box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.363);
 }
 
+.btnUnder {
+    padding: 8px 15px;
+}
+
 .buttonContainer button{
     width: 45%;
 }
@@ -162,7 +164,6 @@ img#user {
 .mainCarrousel {
     display: flex;
     flex-direction: column-reverse;
-    order: 4;
     flex: 100%;
 }
 
@@ -183,7 +184,6 @@ img#user {
     font-size: 1.5rem;
     color: white;
     margin-top: 4%;
-    order: 3;
     width: 25%;
     padding: 1% 1%;
     border-radius: 70px;
@@ -246,7 +246,6 @@ img#user {
     background: linear-gradient(90deg, rgba(255,178,41,1) 0%, rgba(238,42,132,1) 100%);
     height: auto;
     width: 100%;
-    order: 5;
     left:0;
     right: 0%;
     bottom:0%;
@@ -490,6 +489,7 @@ header{
     position: relative;
     width: 100%;
     height: 100vh;
+    background-color: whitesmoke;
 }
 
 .itContainer {
@@ -575,7 +575,122 @@ header{
     padding-left: 3%;
 }
 
+.under {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.under img {
+    width: 40%;
+}
+
+.itButton {
+    padding: 4.5%;
+}
+
+.wrapper {
+    width: 60%;
+    padding: 0 2rem;
+    text-align: center;
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+  }
+  .polaroid {
+    background: #fff;
+    padding: 1rem;
+    box-shadow: 0 0.2rem 1.2rem rgba(0,0,0,0.2);
+    
+  }
+  .polaroid > img{
+    max-width: 100%;
+    height: auto;
+  }
+  .caption {
+    font-size: 1.8rem;
+    text-align: center;
+    line-height: 2em;
+  }
+  .item {
+    width: 30%;
+    display: inline-block;
+    margin-top: 2rem;
+    filter: grayscale(100%);
+  }
+  .item .polaroid:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    transition: all 0.35s;
+  }
+  .item:nth-of-type(4n+1) {
+    transform: scale(0.8, 0.8) rotate(5deg);
+    transition: all 0.35s;
+  }
+  .item:nth-of-type(4n+1) .polaroid:before {
+    transform: rotate(6deg);
+    height: 20%;
+    width: 47%;
+    bottom: 30px;
+    right: 12px;
+    box-shadow: 0 2.1rem 2rem rgba(0,0,0,0.4);
+  }
+  .item:nth-of-type(4n+2) {
+    transform: scale(0.8, 0.8) rotate(-5deg);
+    transition: all 0.35s;
+  }
+  .item:nth-of-type(4n+2) .polaroid:before {
+    transform: rotate(-6deg);
+    height: 20%;
+    width: 47%;
+    bottom: 30px;
+    left: 12px;
+    box-shadow: 0 2.1rem 2rem rgba(0,0,0,0.4);
+  }
+  .item:nth-of-type(4n+4) {
+    transform: scale(0.8, 0.8) rotate(3deg);
+    transition: all 0.35s;
+  }
+  .item:nth-of-type(4n+4) .polaroid:before {
+    transform: rotate(4deg);
+    height: 20%;
+    width: 47%;
+    bottom: 30px;
+    right: 12px;
+    box-shadow: 0 2.1rem 2rem rgba(0,0,0,0.3);
+  }
+  .item:nth-of-type(4n+3) {
+    transform: scale(0.8, 0.8) rotate(-3deg);
+    transition: all 0.35s;
+  }
+  .item:nth-of-type(4n+3) .polaroid:before {
+    transform: rotate(-4deg);
+    height: 20%;
+    width: 47%;
+    bottom: 30px;
+    left: 12px;
+    box-shadow: 0 2.1rem 2rem rgba(0,0,0,0.3);
+  }
+  .item:hover {
+    filter: none;
+    transform: scale(1, 1) rotate(0deg) !important;
+    transition: all 0.35s;
+  }
+  .item:hover .polaroid:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    transform: rotate(0deg);
+    height: 90%;
+    width: 90%;
+    bottom: 0%;
+    right: 5%;
+    box-shadow: 0 1rem 3rem rgba(0,0,0,0.2);
+    transition: all 0.35s;
+  }
+  
 
 @media screen and (max-width: 1024px){
     .mainCarrousel{

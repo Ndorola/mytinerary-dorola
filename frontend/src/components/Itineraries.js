@@ -8,7 +8,7 @@ const Itineraries = (props) => {
     return (
             itineraries.map((it) => {
                 return(
-                    <Itinerary it={it} />
+                    <Itinerary it={it}/>
                 )
             })
         )

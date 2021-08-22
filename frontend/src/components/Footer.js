@@ -14,7 +14,7 @@ const Footer = () => {
                             <NavLink to = "/signout"><p>Sign out</p></NavLink>
                         </nav>
                     </div>
-                    <div className="allRightReserves">miTinerary Proyect 2021 - All Rights Reserved</div>
+                    <div className="allRightReserves">myTinerary Proyect 2021 - All Rights Reserved</div>
                     <div className="socialMedia">
                         <Link to="/notfound"><img src='/assets/instagram.png' alt="instagram"></img></Link>
                         <Link to="/notfound"><img src='/assets/facebook.png' alt="facebook"></img></Link>

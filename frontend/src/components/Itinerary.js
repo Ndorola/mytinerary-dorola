@@ -13,6 +13,7 @@ const Itinerary = (props) => {
 
     return (
         <>
+        {console.log(it)}
         <div className="itContainer">
             <div className="itMain">
                 <div className="itImage" style={{backgroundImage: `url("/assets/itineraries/${it.itinerary.img}")`}}></div>
@@ -35,16 +36,37 @@ const Itinerary = (props) => {
                     </div>
                     <div className="itButton">
                         {visible?
-                        <div>
-                            <h3>Under Construction</h3>
+                        <div className="under">
                             <img src="/assets/underConstruction.png"/>
                         </div>
                         : null}
-                        <button onClick={toggleInfo}>
+                        <button className="btnUnder" onClick={toggleInfo}>
                             {!visible ? "View More" : "View Less"}
                         </button>
                     </div>
                 </div>
+                {/* <div className="wrapper">
+                    <div className="item">
+                        <div className="polaroid">
+                            <img src={`/assets/itineraries/${it.itinerary.img}`}/>
+                            <div className="caption">I Miss London</div>
+                        </div>
+                    </div>
+
+                    <div className="item">
+                        <div className="polaroid">
+                            <img src={`/assets/itineraries/${it.itinerary.img}`}/>
+                            <div className="caption">Love ballons</div>
+                        </div>
+                    </div>
+
+                    <div className="item">
+                        <div className="polaroid">
+                            <img src={`/assets/itineraries/${it.itinerary.img}`}/>
+                            <div className="caption">Vintage life </div>
+                        </div>
+                    </div>
+                </div> */}
             </div>
             </div>
                 </>
