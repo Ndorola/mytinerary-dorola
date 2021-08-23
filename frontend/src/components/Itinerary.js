@@ -1,7 +1,10 @@
 import React from "react"
 import { useState } from "react"
+import { FcCurrencyExchange } from "react-icons/fc"
+import { FcClock } from "react-icons/fc"
+import { FcLikePlaceholder } from "react-icons/fc"
 
-const Itinerary = (props) => {
+const Itinerary = ({it}) => {
 
     const [visible, setVisible] = useState(false)
 
@@ -9,7 +12,8 @@ const Itinerary = (props) => {
         setVisible(!visible)
     }
 
-    const it = props.it
+    const icons = [1, 2, 3, 4, 5]
+    let quantityIcons  = icons.splice(0,it.price)
 
     return (
         <>
@@ -31,8 +35,19 @@ const Itinerary = (props) => {
                         <p key={index}>{hashtag}</p>
                     ))}
                     </div>
-                    <div className="itIcons">
-                        irian los iconos
+                    <div className="iconsBox">
+                        <div className="itIcons">
+                            <p>Price: </p>
+                            {quantityIcons.map((icon, index) => <p key={index}><FcCurrencyExchange/></p>)}
+                        </div>
+                        <div className="itIcons">
+                            <p><FcClock/></p>
+                            <p>{it.time} hours</p>
+                        </div>
+                        <div className="itIcons">
+                            <p><FcLikePlaceholder/></p>
+                            <p>{it.likes}</p>
+                        </div>
                     </div>
                     <div className="itButton">
                         {visible?

@@ -248,7 +248,8 @@ img#user {
     width: 100%;
     left:0;
     right: 0%;
-    bottom:0%;
+    bottom: 0
+
 }
 
 .boxFooter {
@@ -256,7 +257,7 @@ img#user {
     justify-content: center;
     align-items: center;
     width: 100%;
-    bottom: 0%;
+   
 }
 
 .allRightReserves {
@@ -324,7 +325,8 @@ nav#linksFooter {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: auto;
+    height:auto;
+    bottom: 0%;
 }
 
 .mainCity {
@@ -417,6 +419,8 @@ header{
 .photoParent:hover .photoChild,
 .photoParent:focus .photoChild {
     transform: scale(1.05);
+    overflow: auto;
+    z-index: -1;
 }
 
 .photoChild::before {
@@ -427,12 +431,16 @@ header{
     position: absolute;
     top: 0;
     left: 0;
-    background-color: rgba(243, 232, 229, 0.5);
+    background-color: rgba(0, 0, 0, 0.192);
+    overflow: auto;
+    z-index: -1;
 }
 
 .photoParent:hover .photoChild:before,
 .photoParent:focus .photoChild:before {
     display: block;
+    z-index: -1;
+
 }
 
 .photoChild h3, .photoChild h4{
@@ -544,6 +552,33 @@ header{
     font-family: 'Source Sans Pro', sans-serif;
     color: rgb(238, 42, 132);
     font-size: 1.3rem;
+}
+
+.iconsBox {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 70%;
+    padding-left: 3%;
+}
+
+.itIcons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 2%;
+}
+
+.itIcons p {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: rgb(238, 42, 132);
+    font-size: 1rem;
+    margin-right: 8%;
+}
+
+.itIcons path {
+    width: 30px;
 }
 
 .itTitle p {
@@ -926,6 +961,7 @@ header{
 
     .photoChild h3, .photoChild h4{
         font-size: 1.2rem;
+        z-index: 2;
     }
 }
 

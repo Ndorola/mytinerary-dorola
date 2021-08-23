@@ -5,13 +5,11 @@ import Footer from "../components/Footer";
 
 const City = (props) => {
 
+    const city = props.citiesList.find((city) => city._id === props.match.params.id)
+
     return (
         <>
-            {props.citiesList.map((city, index) => {
-                if (city._id === props.match.params.id) {
-                    return <MainCity {...props} key={index} city={city} />
-                }
-            })}
+            <MainCity {...props} city={city} />
             <Footer/>
         </>
     )

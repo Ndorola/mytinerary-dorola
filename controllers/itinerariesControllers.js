@@ -61,9 +61,22 @@ const itinerariesControllers = {
 
     modifyItinerary: async (req, res) => {
         try {
-            var itinerary = itinerary.findOneAndUpdate({_id: req.params.id}, {...req.body})
+            var itinerary = await Itinerary.findOneAndUpdate({_id: req.params.id}, {...req.body})
             if(itinerary !== null) {
                 res.json({success: true})
+            } else {
+                throw new Error ("No results found")
+            }
+        } catch (error) {
+            res.json({success: false, response: error.message})
+        }
+    },
+
+    modifyItineraries: async (req, res) => {
+        try {
+            var itinerary = await Itinerary.updateMany({}, {...req.body}, {new: true})
+            if(itinerary !== null) {
+                res.json({success: true, response: itinerary})
             } else {
                 throw new Error ("No results found")
             }

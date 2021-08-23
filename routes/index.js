@@ -18,6 +18,7 @@ router
 .route('/itineraries')
 .get(itinerariesControllers.getAllItineraries)
 .post(itinerariesControllers.enterItinerary)
+.put(itinerariesControllers.modifyItineraries)
 
 router
 .route('/itinerary/:id')

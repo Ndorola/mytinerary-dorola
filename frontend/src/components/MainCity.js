@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import itinerariesActions from "../redux/actions/itinerariesAction";
+// import citiesActions from "../redux/actions/citiesActions";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Swal from 'sweetalert';
@@ -11,12 +12,7 @@ const MainCity = (props) => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-
-        if(props.citiesList.lenght === 0) {
-            props.history.push('/cities')
-            console.log('me tengo que redireccionar')
-        }
-
+        window.scrollTo(0,0)
         async function getItineraries() {
             try{
                 await props.getItineraries()
@@ -35,9 +31,17 @@ const MainCity = (props) => {
         getItineraries()
     }, [])
 
-    useEffect(() => {
-        
-    }, [])
+
+    // useEffect(()=>{
+    //     if(!props.city.length){
+    //         props.getCities()
+    //     }
+    // },[])
+
+    if(!props.city) {
+        props.history.push('/cities')
+        return false
+    }
     
     if (loading) {
         <Loader/>
@@ -74,11 +78,13 @@ const MainCity = (props) => {
 const mapStateToProps = (state) => {
     return {
         itinerariesList: state.itineraries.itinerariesList,
+        // citiesList: state.cities.citiesList
     }
 }
 
 const mapDispatchToProps = {
     getItineraries: itinerariesActions.getItineraries,
+    // getCities: citiesActions.getCities,
 }
 
 export default connect (mapStateToProps, mapDispatchToProps)(MainCity)
