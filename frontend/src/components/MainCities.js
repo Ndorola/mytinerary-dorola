@@ -10,7 +10,7 @@ const MainCities = (props) => {
     const [loading, setLoading] = useState(true)
     
     useEffect(() => {
-        window.scrollTo(0,0)
+        
         async function getCities() {
             try{
                 await props.getCities()
@@ -21,12 +21,14 @@ const MainCities = (props) => {
                     icon:"warning",
                     button:"Ok!",
                 })
-                props.history.push('/')
-                return false
+                setTimeout(() => {
+                    props.history.push('/')
+                }, 3000)
             }
             setLoading(false)
 
         }
+        window.scrollTo(0,0)
         getCities()
     }, [])
 

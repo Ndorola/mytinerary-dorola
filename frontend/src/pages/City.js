@@ -8,10 +8,10 @@ const City = (props) => {
     const city = props.citiesList.find((city) => city._id === props.match.params.id)
 
     return (
-        <>
+        <div className = "mainBox">
             <MainCity {...props} city={city} />
             <Footer/>
-        </>
+        </div>
     )
 }
 

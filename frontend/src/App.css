@@ -7,10 +7,15 @@ html * {
     padding: 0 ;
     box-sizing: border-box;
     text-decoration: none;
+    height: auto;
+}
+
+body {
+    background-color: #f8f9fa;
 }
 
 .mainBox {
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -244,12 +249,11 @@ img#user {
     justify-content: space-around;
     align-items: center;
     background: linear-gradient(90deg, rgba(255,178,41,1) 0%, rgba(238,42,132,1) 100%);
-    height: auto;
     width: 100%;
     left:0;
     right: 0%;
-    bottom: 0
-
+    bottom:0;
+   
 }
 
 .boxFooter {
@@ -320,13 +324,11 @@ nav#linksFooter {
 }
 
 .mainCities {
+    height: 100vh;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height:auto;
-    bottom: 0%;
 }
 
 .mainCity {
@@ -335,7 +337,7 @@ nav#linksFooter {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 45vh;
+    height: 100vh;
     background-repeat: no-repeat;
 }
 
@@ -371,9 +373,8 @@ header{
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 95vh;
+    height: 100vh;
     margin-top: 2%;
-    margin-bottom: 2%;
 
 }
 
@@ -490,6 +491,7 @@ header{
     color: rgb(238, 42, 132);
     font-size: 1.3rem;
     margin-top: 3%;
+    margin-bottom: 10%;
 }
 
 /* itinerary */
@@ -497,7 +499,9 @@ header{
     position: relative;
     width: 100%;
     height: 100vh;
-    background-color: whitesmoke;
+    /* background-color: whitesmoke; */
+    margin-top: 3%;
+    margin-bottom: 2%;
 }
 
 .itContainer {
@@ -559,7 +563,7 @@ header{
     justify-content: space-around;
     align-items: center;
     width: 70%;
-    padding-left: 3%;
+    padding-left: 4%;
 }
 
 .itIcons {
@@ -812,6 +816,10 @@ header{
         height: auto;
         margin-left: 18%;
     }
+
+    .titleCity {
+        font-size: 2.5rem;
+    }
     
     img#logo {
         width: 50vw;
@@ -929,6 +937,7 @@ header{
     
     .mainFooter {
         background-color: rgb(245, 153, 0);
+        margin-top: 10%;
     }
     
     .boxFooter {
@@ -963,6 +972,24 @@ header{
         font-size: 1.2rem;
         z-index: 2;
     }
+
+    .itImage {
+        display: none;
+    }
+
+    .itBox {
+        width: 80vw;
+        height: auto;
+        background-color: white;
+        position: sticky;
+        z-index: 2;
+        margin-left: 10%;
+        margin-top: 7%;
+        border-radius: 30px;
+        box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.363);
+        
+    }
+
 }
 
 @media screen and (max-width: 425px) {
@@ -1146,5 +1173,37 @@ header{
     .boxSearch input{
         width: 100%;
         align-self: center;
+    }
+
+    .titleCity {
+        font-size: 1.5rem;
+    }
+
+    .itUser img {
+        width: 50px;
+    }
+
+    .itTitle h3 {
+        font-size: 1.5rem;
+    }
+
+    .itTitle p {
+        font-size: 1rem;
+    }
+
+    .itHashtags {
+        display: flex;
+    justify-content: space-around;
+    width: 70%;
+    padding-left: 23%;
+    }
+
+    .itHashtags p {
+        font-size: 1rem;
+        margin-left: 5%;
+    }
+
+    .iconsBox {
+        width: 100%;
     }
 }
