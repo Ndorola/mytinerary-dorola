@@ -729,7 +729,48 @@ header{
     box-shadow: 0 1rem 3rem rgba(0,0,0,0.2);
     transition: all 0.35s;
   }
+
+  .formBox {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      width: 50vw;
+      height: 70vh;
+      align-self: flex-start;
+  }
+
+  .formBox img {
+      width: 150px;
+  }
+
+  .formBox input {
+    border-radius: 20px;
+    padding: 1%;
+    width: 20vw;
+    margin: 1%;
+    border: none;
+    text-align: center;
+  }
   
+  .mainSignUp {
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mainForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80vh;
+    /* background: linear-gradient(90deg, rgba(255,178,41,1) 0%, rgba(238,42,132,1) 100%); */
+  }
 
 @media screen and (max-width: 1024px){
     .mainCarrousel{

@@ -72,7 +72,6 @@ const MainCities = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        citiesList: state.cities.citiesList,
         searchedCities: state.cities.searchedCities,
     }
 }

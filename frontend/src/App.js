@@ -4,7 +4,7 @@ import Cities from "./pages/Cities"
 import City from "./pages/City"
 import NotFound from "./pages/NotFound"
 import {BrowserRouter, Redirect, Route, Switch,} from "react-router-dom"
-import Itineraries from "./components/Itineraries"
+import SignUp from "./components/SignUp"
 
 const App = () => {
 
@@ -14,6 +14,7 @@ const App = () => {
           <Route exact path="/" component={Home}/>
           <Route path="/cities" component={Cities}/>
           <Route path="/city/:id" component={City}/>
+          <Route path="/signup" component={SignUp}/>
           <Route path="/notfound" component={NotFound}/>
           <Redirect to="/notfound"/>
         </Switch>
