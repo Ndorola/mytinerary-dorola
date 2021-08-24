@@ -5,6 +5,7 @@ import City from "./pages/City"
 import NotFound from "./pages/NotFound"
 import {BrowserRouter, Redirect, Route, Switch,} from "react-router-dom"
 import SignUp from "./components/SignUp"
+import SignIn from "./components/SignIn"
 
 const App = () => {
 
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/cities" component={Cities}/>
           <Route path="/city/:id" component={City}/>
           <Route path="/signup" component={SignUp}/>
+          <Route path="/signin" component={SignIn}/>
           <Route path="/notfound" component={NotFound}/>
           <Redirect to="/notfound"/>
         </Switch>

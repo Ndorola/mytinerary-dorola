@@ -10,8 +10,8 @@ const Footer = () => {
                         <nav id="linksFooter">
                             <NavLink exact to = "/"><p>Home</p></NavLink>
                             <NavLink to = "/cities"><p>Cities</p></NavLink>
+                            <NavLink to = "/signup"><p>Sign up</p></NavLink>
                             <NavLink to = "/signin"><p>Sign in</p></NavLink>
-                            <NavLink to = "/signout"><p>Sign out</p></NavLink>
                         </nav>
                     </div>
                     <div className="allRightReserves">myTinerary Proyect 2021 - All Rights Reserved</div>

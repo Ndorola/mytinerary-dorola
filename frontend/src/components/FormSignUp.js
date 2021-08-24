@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const Form = () => {
+const FormSignUp = () => {
     
     const [user, setUser] = useState([{
         name: "", lastname: "", email: "", password: "", url: "", country: ""
@@ -16,8 +16,9 @@ const Form = () => {
 
     return  (
         <div className="mainForm">
-            <form> 
-                <div className="formBox" style={{backgroundImage: "url('/assets/fotos/SignUpFondo.png')"}} alt="iconUser">
+            <form>
+                <div className="formBox">
+                    <h3>Sign Up!</h3> 
                     <input name="name" type="text" placeholder="First name" onChange={changeHandler}/>
                     <input name="lastname" type="text" placeholder="Last name" onChange={changeHandler}/>
                     <input name="email" type="text" placeholder="Email" onChange={changeHandler}/>
@@ -27,14 +28,18 @@ const Form = () => {
                     <select name="Country" onChange={changeHandler}>
                         <option value="value">Choose your Country</option>
                     </select>
-    
-                    <button>Sign Up</button>
-                    <button>Sign Up with Google</button>
+                    <div className="buttonsForm">
+                        <button className="btnForm">Sign Up</button>
+                        <button className="btnForm">Sign Up with Google</button>
+                    </div>
                 </div>
             </form>
+                <div>
+                    <img src="/assets/signUp.png" alt="usuer"/>
+                </div>
             {/* <h3>Hola {user[0].name} </h3> */}
         </div>
     )
 }
 
-export default Form
+export default FormSignUp

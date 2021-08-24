@@ -1,15 +1,15 @@
 import HeaderCities from "./HeaderCities"
-import FormSignUp from "./FormSignUp"
+import FormSignIn from "./FormSignIn"
 import Footer from "./Footer"
 
-const SignUp = () => {
+const SignIn = () => {
     return (
         <div className="mainSignUp">
             <HeaderCities/>
-            <FormSignUp/>
+            <FormSignIn/>
             <Footer/>
         </div>
     )
 }
 
-export default SignUp
+export default SignIn
