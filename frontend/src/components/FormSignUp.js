@@ -1,9 +1,11 @@
 import { useState } from "react"
+import { useForm } from "react-hook-form"
+
 
 const FormSignUp = () => {
     
     const [user, setUser] = useState([{
-        name: "", lastname: "", email: "", password: "", url: "", country: ""
+        name: "", lastname: "", email: "", username: "", password: "", url: "", country: ""
     }])
 
 
@@ -11,8 +13,6 @@ const FormSignUp = () => {
     const changeHandler = (e) => {
         setUser([{...user, [e.target.name]: e.target.value}])
     }
-
-    console.log(user)
 
     return  (
         <div className="mainForm">
@@ -22,6 +22,7 @@ const FormSignUp = () => {
                     <input name="name" type="text" placeholder="First name" onChange={changeHandler}/>
                     <input name="lastname" type="text" placeholder="Last name" onChange={changeHandler}/>
                     <input name="email" type="text" placeholder="Email" onChange={changeHandler}/>
+                    <input name="username" type="text" placeholder="Username" onChange={changeHandler}/>
                     <input name="password" type="text" placeholder="Password" onChange={changeHandler}/>
                     <input name="url" type="text" placeholder="URL of picture" onChange={changeHandler}/>
 

@@ -1,6 +1,7 @@
 const express = require('express')
 const citiesControllers = require('../controllers/citiesControllers')
 const itinerariesControllers = require('../controllers/itinerariesControllers')
+const usersControllers = require('../controllers/usersControllers')
 const router = express.Router()
 
 router
@@ -29,6 +30,16 @@ router
 router
 .route('/itineraries/:city')
 .get(itinerariesControllers.getItinerariesByCity)
+
+router
+.route('/user/signup')
+.post(usersControllers.addUser)
+
+router
+.route('/user/signin')
+.post(usersControllers.enterUser)
+// .delete(usersControllers.deleteUser)
+// .put(usersControllers.modifyUser)
 
 module.exports = router
 

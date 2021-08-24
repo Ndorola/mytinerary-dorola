@@ -3,7 +3,7 @@ import { useState } from "react"
 const FormSignIn = () => {
     
     const [user, setUser] = useState([{
-        name: "", lastname: "", email: "", password: "", url: "", country: ""
+        username: "", password: "",
     }])
 
 
@@ -20,7 +20,7 @@ const FormSignIn = () => {
                 <div className="formBox">
                     <h3>Welcome back!</h3>
                     <p>Sign in to discover and connect with MYtinerary's global community</p>
-                    <input name="email" type="text" placeholder="Email" onChange={changeHandler}/>
+                    <input name="username" type="text" placeholder="Username or email" onChange={changeHandler}/>
                     <input name="password" type="text" placeholder="Password" onChange={changeHandler}/>
 
                     <select name="Country" onChange={changeHandler}>
