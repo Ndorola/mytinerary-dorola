@@ -797,6 +797,20 @@ header{
       margin-top: 2%;
   }
 
+  .userBox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .welcomeUser {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+    margin-right: 20px;
+    margin-top: 10px;
+  }
+
 @media screen and (max-width: 1024px){
     .mainCarrousel{
         height: auto;

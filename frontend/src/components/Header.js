@@ -1,6 +1,9 @@
+import { connect } from "react-redux"
+import React from "react"
 import {NavLink} from "react-router-dom"
+import userActions from "../redux/actions/usersActions"
 
-const Header = () => {
+const Header = (props) => {
 
     return (
         <>
@@ -9,10 +12,14 @@ const Header = () => {
                     <nav id="navBar">
                         <NavLink to = "/"><p>Home</p></NavLink>
                         <NavLink to = "/cities"><p>Cities</p></NavLink>
-                        <NavLink to = "/signup"><p>Sign up</p></NavLink>
-                        <NavLink to = "/signin"><p>Sign in</p></NavLink>
+                        {!props.signIn && <NavLink to = "/signup"><p>Sign up</p></NavLink>}
+                        {!props.signIn && <NavLink to = "/signin"><p>Sign in</p></NavLink>}
+                        {!props.signIn && <p onClick={() => props.signOut()}>Sign Out</p>}
                     </nav>
+                    <div className="userBox">
+                    <h5 className="welcomeUser">Welcome {props.signIn && props.name}!</h5>
                     <NavLink to = "/user"><img id="user" src="/assets/iconUser.png" alt="iconUser"></img></NavLink>
+                    </div>
                 </div>
                 <div className="boxTitle">
                     <div className="title">
@@ -28,4 +35,15 @@ const Header = () => {
     )
 }
 
-export default Header
+const mapStateToProps = state => {
+    return {
+        signIn: state.users.signIn,
+        name: state.users.name
+    }
+}
+
+const mapDispatchToProps = {
+    signOut: userActions.signOut
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

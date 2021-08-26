@@ -9,20 +9,19 @@ const usersControllers = {
         let hashedPass = bcryptjs.hashSync(password)
 
         const addNewUser = new User ({
-            name: req.body.name,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            username: req.body.username,
+            name,
+            lastName,
+            email,
+            username,
             password: hashedPass,
-            url: req.body.url,
-            country: req.body.country,
+            url,
+            country,
         })
-        
         try {
-            let registeredUser = await User.findOne({username: username, email: email})
+            let registeredUser = await User.findOne({email: email})
             if(!registeredUser){
-                res.json({success: true, response: 'New user registered successfully'})
                 await addNewUser.save()
+                res.json({success: true, response: addNewUser.name})
             } else {
                 throw new Error ('This user is already registered')
             }
@@ -32,12 +31,12 @@ const usersControllers = {
     },
 
     enterUser : async (req, res) => {
-        const { email, username, password } = req.body
+        const { email, password } = req.body
         try {
-            let registeredUser = await User.findOne({username: username} || {email: email})
+            let registeredUser = await User.findOne({email: email})
             if (registeredUser) {
                 if(bcryptjs.compareSync(password, registeredUser.password)) {
-                    res.json({success: true, response: 'Successful registered user'})
+                    res.json({success: true, response: registeredUser})
                 } else {
                     throw new Error ('Incorrect username or password')
                 }

@@ -32,11 +32,11 @@ router
 .get(itinerariesControllers.getItinerariesByCity)
 
 router
-.route('/user/signup')
+.route('/users/signup')
 .post(usersControllers.addUser)
 
 router
-.route('/user/signin')
+.route('/users/signin')
 .post(usersControllers.enterUser)
 // .delete(usersControllers.deleteUser)
 // .put(usersControllers.modifyUser)

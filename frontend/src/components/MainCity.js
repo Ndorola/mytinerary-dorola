@@ -63,7 +63,10 @@ const MainCity = (props) => {
                         <NavLink to = "/signup"><p>Sign up</p></NavLink>
                         <NavLink to = "/signin"><p>Sign in</p></NavLink>
                     </nav>
-                    <NavLink to = "/user"><img id="user" src="/assets/iconUser.png" alt="iconUser"></img></NavLink>
+                    <div className="userBox">
+                        <h5 className="welcomeUser">Welcome {props.signIn && props.name}!</h5>
+                        <NavLink to = "/user"><img id="user" src="/assets/iconUser.png" alt="iconUser"></img></NavLink>
+                    </div>
                 </div>
                 <div className="boxTitleCity">
                     <h2 className="titleCity">Welcome to {props.city.name}</h2>
@@ -82,6 +85,8 @@ const MainCity = (props) => {
 const mapStateToProps = (state) => {
     return {
         itinerariesList: state.itineraries.itinerariesList,
+        signIn: state.users.signIn,
+        name: state.users.name
     }
 }
 

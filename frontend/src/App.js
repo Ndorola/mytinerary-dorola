@@ -6,8 +6,10 @@ import NotFound from "./pages/NotFound"
 import {BrowserRouter, Redirect, Route, Switch,} from "react-router-dom"
 import SignUp from "./components/SignUp"
 import SignIn from "./components/SignIn"
+import { connect } from "react-redux";
+import userActions from "./redux/actions/usersActions"
 
-const App = () => {
+const App = (props) => {
 
   return (
       <BrowserRouter>
@@ -24,4 +26,8 @@ const App = () => {
   )
 }
 
-export default App
+const mapDispatchToProps = {
+  signIn: userActions.logIn
+}
+
+export default connect(null, mapDispatchToProps) (App)
