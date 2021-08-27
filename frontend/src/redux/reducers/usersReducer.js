@@ -1,31 +1,42 @@
-const usersReducer = (state = {signIn: false, name: null, countries: []}, action) => {
+const usersReducer = (state = {token: null, name: null, url: null, countries: []}, action) => {
     switch(action.type) {
+
         case 'SIGN_UP':
+            localStorage.setItem('token', action.payload.token)
+            localStorage.setItem('name', action.payload.name)
+            localStorage.setItem('url', action.payload.url)
             return {
-                signIn: true,
-                name: action.payload.name
+                token: action.payload.token,
+                name: action.payload.name,
+                url: action.payload.url
             }
-            // alert('Congratulations ' + action.payload.name + ', you are already registered!')
-            // console.log(action.payload.name)
-            
+
         case 'SIGN_IN':
+            localStorage.setItem('token', action.payload.token)
+            localStorage.setItem('name', action.payload.name)
+            localStorage.setItem('url', action.payload.url)
             return {
-                signIn: true,
-                name: action.payload.name
+                token: true,
+                name: action.payload.name,
+                url: action.payload.url
             }
-            // alert('Welcome ' + action.payload.name + '!')
-        
+
+        case 'SIGN_OUT':
+            localStorage.removeItem('token')
+            localStorage.removeItem('name')
+            localStorage.removeItem('url')
+            return {
+                token: null,
+                name: null,
+                url: null,
+            }
+
         case 'GET_COUNTRIES':
             return {
                 ...state,
                 countries: action.payload,
             }
 
-        case 'SIGN_OUT':
-            return {
-                signIn: false,
-                name: null
-            }
 
         default:
             return state

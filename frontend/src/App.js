@@ -8,8 +8,15 @@ import SignUp from "./components/SignUp"
 import SignIn from "./components/SignIn"
 import { connect } from "react-redux";
 import userActions from "./redux/actions/usersActions"
+import { useEffect } from "react"
 
 const App = (props) => {
+
+  useEffect(() => {
+    if(localStorage.getItem('token')) {
+      props.signInLS(localStorage.getItem('token'), localStorage.getItem('name'), localStorage.getItem('url'))
+    }
+  } ,[])
 
   return (
       <BrowserRouter>
@@ -17,17 +24,24 @@ const App = (props) => {
           <Route exact path="/" component={Home}/>
           <Route path="/cities" component={Cities}/>
           <Route path="/city/:id" component={City}/>
-          <Route path="/signup" component={SignUp}/>
-          <Route path="/signin" component={SignIn}/>
+          {!props.token && <Route path="/signup" component={SignUp}/>}
+          {!props.token && <Route path="/signin" component={SignIn}/>}
           <Route path="/notfound" component={NotFound}/>
-          <Redirect to="/notfound"/>
+          {props.token ? <Redirect to="/"/> : <Redirect to="/notfound"/> }
         </Switch>
       </BrowserRouter>
   )
 }
 
-const mapDispatchToProps = {
-  signIn: userActions.logIn
+
+const mapStateToProps = state => {
+  return {
+      token: state.users.token
+  }
 }
 
-export default connect(null, mapDispatchToProps) (App)
+const mapDispatchToProps = {
+  signInLS: userActions.signInLS
+}
+
+export default connect(mapStateToProps , mapDispatchToProps) (App)

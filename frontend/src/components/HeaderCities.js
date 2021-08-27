@@ -13,11 +13,11 @@ const HeaderCities = (props) => {
                         <NavLink to = "/cities"><p>Cities</p></NavLink>
                         {!props.signIn && <NavLink to = "/signup"><p>Sign up</p></NavLink>}
                         {!props.signIn && <NavLink to = "/signin"><p>Sign in</p></NavLink>}
-                        {!props.signIn && <p onClick={() => props.signOut()}>Sign Out</p>}
+                        {props.signIn && <p className="pNav" onClick={() => props.signOut()}>Sign Out</p>}  
                     </nav>
                     <div className="userBox">
-                        <h5 className="welcomeUser">Welcome {props.signIn && props.name}!</h5>
-                        <NavLink to = "/user"><img id="user" src="/assets/iconUser.png" alt="iconUser"></img></NavLink>
+                        {props.signIn && <h5 className="welcomeUser">Welcome {props.name}!</h5>}
+                        <NavLink to = "/user">{props.signIn ? <img id="user" src={`${props.url}`}/> : <img id="user" src="/assets/iconUser.png" alt="iconUser"/>}</NavLink>
                     </div>
                 </div>
             </>
@@ -25,8 +25,9 @@ const HeaderCities = (props) => {
 }
 const mapStateToProps = state => {
     return {
-        signIn: state.users.signIn,
+        signIn: state.users.token,
         name: state.users.name,
+        url: state.users.url,
         signOut: state.users.signOut
     }
 }

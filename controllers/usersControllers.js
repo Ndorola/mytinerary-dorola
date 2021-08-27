@@ -1,6 +1,7 @@
 const { response } = require('express')
 const User = require ('../models/User')
 const bcryptjs = require ('bcryptjs')
+const jwt = require ('jsonwebtoken')
 
 const usersControllers = {
     addUser: async(req, res) => {
@@ -21,7 +22,8 @@ const usersControllers = {
             let registeredUser = await User.findOne({email: email})
             if(!registeredUser){
                 await addNewUser.save()
-                res.json({success: true, response: addNewUser.name})
+                const token = jwt.sign({addNewUser}, process.env.SECRETORKEY)
+                res.json({success: true, response: {name: addNewUser.name, url: addNewUser.ur, token}})
             } else {
                 throw new Error ('This user is already registered')
             }
@@ -36,12 +38,13 @@ const usersControllers = {
             let registeredUser = await User.findOne({email: email})
             if (registeredUser) {
                 if(bcryptjs.compareSync(password, registeredUser.password)) {
-                    res.json({success: true, response: registeredUser})
+                    const token = jwt.sign({registeredUser}, process.env.SECRETORKEY)
+                    res.json({success: true, response: {name: registeredUser.name, url: registeredUser.url, token}})
                 } else {
-                    throw new Error ('Incorrect username or password')
+                    throw new Error ('Incorrect email or password')
                 }
             } else {
-                throw new Error ('Incorrect username or password')
+                throw new Error ('Incorrect email or password')
             }
         } catch(error){
             res.json({success: false, error: error.message})

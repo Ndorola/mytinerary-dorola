@@ -4,7 +4,8 @@ import userActions from "../redux/actions/usersActions"
 
 const FormSignUp = (props) => {
 
-    console.log(props)
+    // console.log(props.countries)
+
     const [addUser, setAddUser] = useState({
         name: "",
         lastName: "",
@@ -30,9 +31,11 @@ const FormSignUp = (props) => {
             ...addUser,
             [e.target.name] : e.target.value
         })
+        console.log(addUser)
     }
     
     // useEffect(() => {
+    //     console.log(props.countries)
     //     async function getCountries() {
     //         try{
     //             await props.getCountries()
@@ -42,6 +45,9 @@ const FormSignUp = (props) => {
     //     }
     //     getCountries()
     // } ,[])
+
+    var countries = ["Argentina", "Bahamas", "Barbados", "Belice", "Bolivia","Brasil","Canadá","Chile","Colombia","Costa Rica","Cuba","Dominica","Ecuador","El Salvador","Estados Unidos","Granada","Guatemala","Guyana","Haití","Honduras","Jamaica","México","Nicaragua","Panamá","Paraguay","Perú","República Dominicana","Santa Lucía","Surinam","Uruguay","Venezuela"]
+    console.log(countries)
 
     const submitData = (e) => {
         e.preventDefault()
@@ -72,11 +78,6 @@ const FormSignUp = (props) => {
             setError({...error, email:"Enter your email"})
         }
     
-        //username
-        if (addUser.username === null || addUser.username === "") {
-            setError({...error, username:"Enter a username"})
-        }
-    
         //password
         if (addUser.password === null || addUser.password === "") {
             setError({...error, password:"Enter a password"})
@@ -104,7 +105,6 @@ const FormSignUp = (props) => {
                             name="name"
                             type="text"
                             placeholder="First name"
-                            error=""
                             value={addUser.name} 
                             onChange={inputChange}
                         />
@@ -115,7 +115,6 @@ const FormSignUp = (props) => {
                             name="lastName"
                             type="text"
                             placeholder="Last name"
-                            error=""
                             value={addUser.lastname} 
                             onChange={inputChange}
                         />
@@ -126,7 +125,6 @@ const FormSignUp = (props) => {
                             name="email"
                             type="email"
                             placeholder="Email"
-                            error=""
                             value={addUser.email} 
                             onChange={inputChange}
                         />
@@ -134,21 +132,9 @@ const FormSignUp = (props) => {
                     </div>
                     <div>
                         <input
-                            name="username"
-                            type="text"
-                            placeholder="Username"
-                            error=""
-                            value={addUser.username} 
-                            onChange={inputChange}
-                        />
-                        {error ? (<p className="inputError">{error.username}</p>) : null}
-                    </div>
-                    <div>
-                        <input
                             name="password"
                             type="password"
                             placeholder="Password"
-                            error=""
                             value={addUser.password} 
                             onChange={inputChange}
                         />
@@ -159,8 +145,6 @@ const FormSignUp = (props) => {
                             name="url"
                             type="text"
                             placeholder="Url image"
-                            error=""
-                            validation=""
                             value={addUser.url} 
                             onChange={inputChange}
                         />
@@ -169,9 +153,7 @@ const FormSignUp = (props) => {
                     <div>
                         <select value={addUser.country} onChange={inputChange} >
                             <option value="value">Choose your Country</option>
-                            {/* {props.getCountries.map((country) => {
-                                <option value="value">{country.name}</option>
-                            })} */}
+                            {countries.map((country, index) => <option key={index} value={"value"}>{country}</option>)}
                         </select>
                         {error ? (<p className="inputError">{error.country}</p>) : null}
                     </div>
@@ -198,7 +180,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
     signUp: userActions.signUp,
     signIn: userActions.signIn,
-    getCountries: userActions.countries
+    getCountries: userActions.getCountries
 }
 
 
