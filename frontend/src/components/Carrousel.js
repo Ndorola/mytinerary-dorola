@@ -7,6 +7,8 @@ import {
   CarouselIndicators,
 } from 'reactstrap';
 
+console.log('renderice')
+
 const items = [
   {
     images: [

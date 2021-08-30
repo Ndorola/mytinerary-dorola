@@ -89,7 +89,7 @@ const mapStateToProps = (state) => {
         token: state.users.token,
         name: state.users.name,
         url: state.users.url,
-        signOut: state.users.signOut
+        signOut: state.users.logOut
     }
 }
 

@@ -1,49 +1,50 @@
 import { useState } from "react"
 import { connect } from "react-redux"
 import userActions from "../redux/actions/usersActions"
+import GoogleLogin from 'react-google-login'
+import { Link } from "react-router-dom"
 
 
 const FormSignIn = (props) => {
 
-        const [userLog, setUserLog] = useState({
+        const [addUser, setAddUser] = useState({
             email: "",
             password: ""
         })
     
-        const [error, setError] = useState({
-            email: "",
-            password: ""
-        })
+        const [error, setError] = useState(null)
     
         const inputChange = (e) => {
-            setUserLog({
-                ...userLog,
+            setAddUser({
+                ...addUser,
                 [e.target.name] : e.target.value
             })
         }
-        console.log(userLog)
-    
-        const submitData = (e) => {
+        console.log(addUser)
+
+        const submitData = async (e) => {
             e.preventDefault()
-            try {
-                props.signIn(userLog)
-            } catch(error) {
-                console.log(error)
-            }
-    
-            //email - email
-            if (!userLog.email.includes("@") || !userLog.email.includes(".")) {
-                setError({...error, email:"Invalid email or email"})
-            }
-            if (userLog.email === null || userLog.email === "") {
-                setError({...error, email:"Enter email or email"})
-            }
-        
-            //password
-            if (userLog.password === null || userLog.password === "") {
-                setError({...error, password:"Enter a password"})
+            console.log(error)
+            console.log('hola')
+            let response = await props.signIn(addUser)
+            if(!response.data.success) {
+                setError(response.data.error)
             }
         }
+
+        const responseGoogle = async (response) => {
+            let userGoogle = {
+                email: response.profileObj.email,
+                password: response.profileObj.googleId,
+                signInGoogle: true
+            }
+            let res = await props.signIn(userGoogle)
+            if(!res.data.success) {
+                setError(res.data.error)
+            }  
+        }
+
+        
 
     return  (
         <div className="mainForm">
@@ -56,27 +57,34 @@ const FormSignIn = (props) => {
                             name="email"
                             type="text"
                             placeholder="Enter your email"
-                            error=""
-                            value={userLog.email} 
                             onChange={inputChange}
                         />
-                        {error ? (<p className="inputError">{error.email}</p>) : null}
+                        {error && error.find(err => err.path[0]==="email") && <p className="inputError">{error.find(err => err.path[0]==="email").message}</p>}
                     </div>
                     <div>
                         <input
                             name="password"
                             type="password"
                             placeholder="Password"
-                            error=""
-                            value={userLog.password} 
                             onChange={inputChange}
                         />
-                        {error ? (<p className="inputError">{error.password}</p>) : null}
+                        {error && error.find(err => err.path[0]==="password") && <p className="inputError">{error.find(err => err.path[0]==="password").message}</p>}
                     </div>
                     
                     <div className="buttonsForm">
                         <button className="btnForm" onClick={submitData}>Sign in</button>
-                        <button className="btnForm">Sign in with Google</button>
+                        <GoogleLogin
+                            className="btnGoogle"
+                            clientId="1089874556679-9h3m7uo8a9kkoc1ofepgo4jnouufr12t.apps.googleusercontent.com"
+                            buttonText="Sign in with Google"
+                            onSuccess={responseGoogle}
+                            onFailure={responseGoogle}
+                            cookiePolicy={'single_host_origin'}
+                        />,
+                    </div>
+                    <div>
+                        <p>Don't have an account?</p>
+                        <Link to="/signup">Sign up here!</Link> 
                     </div>
                 </div>
             </form>

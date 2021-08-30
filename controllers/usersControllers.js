@@ -5,7 +5,7 @@ const jwt = require ('jsonwebtoken')
 
 const usersControllers = {
     addUser: async(req, res) => {
-        const { name, lastName, email, username, password, url, country } = req.body
+        const { name, lastName, email, password, url, country, google } = req.body
 
         let hashedPass = bcryptjs.hashSync(password)
 
@@ -13,17 +13,17 @@ const usersControllers = {
             name,
             lastName,
             email,
-            username,
             password: hashedPass,
             url,
             country,
+            google,
         })
         try {
             let registeredUser = await User.findOne({email: email})
             if(!registeredUser){
                 await addNewUser.save()
-                const token = jwt.sign({addNewUser}, process.env.SECRETORKEY)
-                res.json({success: true, response: {name: addNewUser.name, url: addNewUser.ur, token}})
+                const token = jwt.sign({...addNewUser}, process.env.SECRETORKEY)
+                res.json({success: true, response: {name: addNewUser.name, url: addNewUser.url, token}})
             } else {
                 throw new Error ('This user is already registered')
             }
@@ -33,12 +33,14 @@ const usersControllers = {
     },
 
     enterUser : async (req, res) => {
-        const { email, password } = req.body
+        console.log('hola soy enter user')
+        const { email, password, signInGoogle } = req.body
         try {
             let registeredUser = await User.findOne({email: email})
             if (registeredUser) {
+                if(registeredUser.google && !signInGoogle) throw new Error ('You create account with Google, please sign in with them')
                 if(bcryptjs.compareSync(password, registeredUser.password)) {
-                    const token = jwt.sign({registeredUser}, process.env.SECRETORKEY)
+                    const token = jwt.sign({...registeredUser}, process.env.SECRETORKEY)
                     res.json({success: true, response: {name: registeredUser.name, url: registeredUser.url, token}})
                 } else {
                     throw new Error ('Incorrect email or password')
@@ -49,9 +51,12 @@ const usersControllers = {
         } catch(error){
             res.json({success: false, error: error.message})
         }
+    },
+
+    verifytoken: (req, res) => {
+        console.log(req.user)
+        res.json({name: req.user.name, url: req.user.url})
     }
 }
 
 module.exports = usersControllers
-
-//instalamos bcryptjs

@@ -1,49 +1,74 @@
 import axios from "axios";
 
 const userActions = {
-    signIn: (userLog) => {
+
+    signIn: (addUser) => {
+        console.log("lo que sea")
         return async (dispatch) => {
-            let response = await axios.post('http://localhost:4000/api/users/signin', {...userLog})
-            let data = response.data.response
-            dispatch({type: 'SIGN_IN', payload: data})
-            if (!response.data.success) {
-                throw new Error ('Ups! Sign in failed')
+        let respuesta = await axios.post(
+            "http://localhost:4000/api/users/signin",
+            { ...addUser }
+        );
+        console.log(respuesta)
+        if (respuesta.data.success) {
+            dispatch({
+            type: "SIGNIN_INTO_SISTEM",
+            payload: {
+                token: respuesta.data.response.token,
+                name: respuesta.data.response.name,
+                url: respuesta.data.response.url
             }
+            });
         }
+        return respuesta;
+        };
     },
+    
     signUp: (addUser) => {
-        console.log("entre")
-        return async (dispatch) => {
-            let response = await axios.post('http://localhost:4000/api/users/signup', {...addUser})
-            let data = response.data.response
-            console.log(data)
-            dispatch({type: 'SIGN_UP', payload: data})
-            if (!response.data.success) {
-                throw new Error ('Ups! Sign up failed')
-            }
+    
+        return async (dispatch, getState) => {
+        let respuesta = await axios.post(
+            "http://localhost:4000/api/users/signup",
+            { ...addUser }
+        );
+
+        if (respuesta.data.success) {
+            dispatch({
+            type: "SIGNIN_INTO_SISTEM",
+            payload: {
+                token: respuesta.data.response.token,
+                name: respuesta.data.response.name,
+                url: respuesta.data.response.url
+            },
+            });
         }
-    },
-    getCountries: () => {
-        return async (dispatch) => {
-            let response = await axios.get('https://restcountries.eu/rest/v2/#')
-            let data = response.data
-            dispatch({type: 'GET_COUNTRIES', payload: data})
-            // if (!response.data.success) {
-            //     throw new Error ('Ups! select failed')
-            // }
-        }
-    },
-    signOut: () => {
-        return (dispatch) => {
-            dispatch({type: 'SIGN_OUT'})
-        }
+
+        return respuesta;
+        };
     },
 
-    signInLS: (token, name, url) => {
-        return (dispatch) => {
-            dispatch({ type: 'SIGN_IN' , payload: {token: token, name: name, url: url}})
-        }
-    }
+    logOut: () => {
+        return (dispatch, getState) => {
+        dispatch({ type: "LOG_OUT" });
+        };
+    },
+
+    signInLS: (token) => {
+        return async (dispatch, getState) => {
+        try {
+            let respuesta = await axios.get('http://localhost:4000/api/verifytoken', {
+                headers: {
+                Authorization: 'Bearer ' + token
+                }
+            })
+            console.log(respuesta)
+            dispatch({ type: "SIGNIN_INTO_SISTEM", payload: { token: token , name: respuesta.data.name, url: respuesta.data.url} });
+            } catch(error) {
+                console.log('texto')
+            return dispatch({type: 'LOG_OUT'})
+            }
+            };
+        },
 }
 
 export default userActions

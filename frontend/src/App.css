@@ -488,7 +488,7 @@ header{
 }
 
 .formBox h3 {
-    margin-bottom: 2%;
+    margin-bottom: 4%;
 }
 
 .sorry {
@@ -565,11 +565,24 @@ header{
 
 .formBox p {
     flex: none;
-    padding-left: 0%;
+    padding: 0%;
+    padding: 0%;
     width: 80%;
     text-align: center;
-    margin-bottom: 6%;
-    font-size: 1.2rem;
+    font-size: 1rem;
+}
+
+button.btnGoogle {
+    border-radius: 60px, 60px;
+
+    
+}
+
+.btnGoogle span {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: rgb(238, 42, 132);
+    font-size: 1.1rem;
+    border-radius: 60px;
 }
 
 .iconsBox {
@@ -745,15 +758,15 @@ header{
   }
 
   .formBox {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 40vw;
-      height: 70vh;
-        background-color: white;
-        border-radius: 30px;
-        box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.363);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 65vh;
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.363);
   }
 
   .formBox img {
@@ -764,12 +777,24 @@ header{
     border-radius: 20px;
     padding: 1%;
     width: 20vw;
-    margin: 1%;
+    margin: 6%;
     border: none;
     text-align: center;
     background-color: rgba(245, 151, 0, 0.329);
   }
-  
+
+.inputError {
+    width: 100%;
+ 
+}
+
+  .formInput {
+    display: flex;
+    justify-content: space-evenly;
+    width: 90%;
+    margin-right: 7%;
+  }
+
   .mainSignUp {
     height: 100vh;
     display: flex;
@@ -792,9 +817,19 @@ header{
   .formContainer {
       display: flex;
   }
+  
+  form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
 
   .buttonsForm {
       display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 80%;
       margin-top: 2%;
   }
 
@@ -1054,7 +1089,7 @@ header{
     }
 
     .photoChild h3, .photoChild h4{
-        font-size: 1.2rem;
+        font-size: 1rem;
         z-index: 2;
     }
 

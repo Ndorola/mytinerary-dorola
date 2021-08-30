@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { connect } from "react-redux"
 import userActions from "../redux/actions/usersActions"
+import GoogleLogin from 'react-google-login'
+import { Link } from "react-router-dom";
 
 const FormSignUp = (props) => {
 
@@ -10,30 +12,22 @@ const FormSignUp = (props) => {
         name: "",
         lastName: "",
         email: "",
-        username: "",
-        password: "",
         url: "",
-        country: ""
+        country: "",
+        password: "",
     })
 
-    const [error, setError] = useState({
-        name: "",
-        lastName: "",
-        email: "",
-        username: "",
-        password: "",
-        url: "",
-        country: ""
-    })
+    const [error, setError] = useState(null)
 
     const inputChange = (e) => {
         setAddUser({
             ...addUser,
             [e.target.name] : e.target.value
         })
-        console.log(addUser)
+      
     }
     
+    console.log(addUser)
     // useEffect(() => {
     //     console.log(props.countries)
     //     async function getCountries() {
@@ -46,122 +40,119 @@ const FormSignUp = (props) => {
     //     getCountries()
     // } ,[])
 
-    var countries = ["Argentina", "Bahamas", "Barbados", "Belice", "Bolivia","Brasil","Canadá","Chile","Colombia","Costa Rica","Cuba","Dominica","Ecuador","El Salvador","Estados Unidos","Granada","Guatemala","Guyana","Haití","Honduras","Jamaica","México","Nicaragua","Panamá","Paraguay","Perú","República Dominicana","Santa Lucía","Surinam","Uruguay","Venezuela"]
-    console.log(countries)
+    var countries = ["Argentina", "Bahamas", "Barbados", "Belize", "Bolivia", "Brazil", "Canada", "Chile", "Colombia", "Costa Rica", "Cuba", "Dominica", " Ecuador "," El Salvador "," United States "," Granada "," Guatemala "," Guyana "," Haiti "," Honduras "," Jamaica "," Mexico "," Nicaragua "," Panama "," Paraguay "," Peru "," Dominican Republic "," Santa Lucia "," Surinam "," Uruguay "," Venezuela "]
 
-    const submitData = (e) => {
+    const submitData = async (e) => {
         e.preventDefault()
-        try {
-            props.signUp(addUser)
-        } catch(error) {
-            console.log(error)
-        }
-
-        //name
-        if (addUser.name === null || addUser.name === "") {
-            setError({...error, name:"Enter your name"})
-        }
-        if (addUser.lastName.length < 3) {
-            setError({...error, name:"Enter your name"})
-        }
-    
-        //lastName
-        if (addUser.lastName === null || addUser.lastName === "") {
-            setError({...error, lastName:"Enter your lastName"})
-        }
-    
-        //email
-        if (!addUser.email.includes("@") || !addUser.email.includes(".")) {
-            setError({...error, email:"Invalid email"})
-        }
-        if (addUser.email === null || addUser.email === "") {
-            setError({...error, email:"Enter your email"})
-        }
-    
-        //password
-        if (addUser.password === null || addUser.password === "") {
-            setError({...error, password:"Enter a password"})
-        }
-    
-        //url
-        if (addUser.url === null || addUser.url === "") {
-            setError({...error, url:"Enter a url"})
-        }
-    
-        //country
-        if (addUser.country === null || addUser.country === "") {
-            setError({...error, country:"Enter your country"})
-        }
+        console.log(error)
+        console.log('hola')
+        let response = await props.signUp(addUser)
+        if(!response.data.success) {
+            setError(response.data.error)
+        }       
+        // if (Object.keys(addUser).some((property) => addUser[property] === "")) {
+        //     alert("All fields are required")
+        //     return false
+        // }
     }
-        
+    
+    const responseGoogle = async (response) => {
+        let addUserGoogle = {
+            name: response.profileObj.givenName,
+            lastName: response.profileObj.familyName,
+            email: response.profileObj.email,
+            url: response.profileObj.imageUrl,
+            password: response.profileObj.googleId,
+            google: true
+        }
+        let res = await props.signUp(addUserGoogle)
+        if(!res.data.success) {
+            setError(res.data.error)
+        }  
+    }
+
+    
 
     return  (
         <div className="mainForm">
             <form action="/users/signup" method="POST">
                 <div className="formBox">
                     <h3>Sign Up!</h3>
-                    <div>
-                        <input
-                            name="name"
-                            type="text"
-                            placeholder="First name"
-                            value={addUser.name} 
-                            onChange={inputChange}
-                        />
-                        {error ? (<p className="inputError">{error.name}</p>) : null}
+                    <div className="formInput">
+                        <div>
+                            <input
+                                name="name"
+                                type="text"
+                                placeholder="First name"
+                                onChange={inputChange}
+                            />
+                            {error && error.find(err => err.path[0]==="name") && <p className="inputError">{error.find(err => err.path[0]==="name").message}</p>}
+                        </div>
+                        <div>
+                            <input
+                                name="lastName"
+                                type="text"
+                                placeholder="Last name"
+                                onChange={inputChange}
+                            />
+                            {error && error.find(err => err.path[0]==="lastName") && <p className="inputError">{error.find(err => err.path[0]==="lastName").message}</p>}
+                        </div>
                     </div>
-                    <div>
-                        <input
-                            name="lastName"
-                            type="text"
-                            placeholder="Last name"
-                            value={addUser.lastname} 
-                            onChange={inputChange}
-                        />
-                        {error ? (<p className="inputError">{error.lastName}</p>) : null}
+                    <div className="formInput">
+                        <div>
+                            <input
+                                name="email"
+                                type="email"
+                                placeholder="Email"
+                                onChange={inputChange}
+                            />
+                            {error && error.find(err => err.path[0]==="email") && <p className="inputError">{error.find(err => err.path[0]==="email").message}</p>}
+                        </div>
+                        <div>
+                            <input
+                                name="password"
+                                type="password"
+                                placeholder="Password"
+                                onChange={inputChange}
+                            />
+                            {error && error.find(err => err.path[0]==="password") && <p className="inputError">{error.find(err => err.path[0]==="password").message}</p>}
+                        </div>
                     </div>
-                    <div>
-                        <input
-                            name="email"
-                            type="email"
-                            placeholder="Email"
-                            value={addUser.email} 
-                            onChange={inputChange}
-                        />
-                        {error ? (<p className="inputError">{error.email}</p>) : null}
+                    <div className="formInput">
+                        <div>
+                            <input
+                                name="url"
+                                type="text"
+                                placeholder="Url image"
+                                onChange={inputChange}
+                            />
+                            {error && error.find(err => err.path[0]==="url") && <p className="inputError">{error.find(err => err.path[0]==="url").message}</p>}
+                        </div>
+                        <div>
+                            <select name="country" onChange={inputChange} >
+                                <option>Choose your Country</option>
+                                {countries.map((country, index) => <option key={index}>{country}</option>)}
+                            </select>
+                            {error && error.find(err => err.path[0]==="country") && <p className="inputError">{error.find(err => err.path[0]==="country").message}</p>}
+                        </div>
                     </div>
-                    <div>
-                        <input
-                            name="password"
-                            type="password"
-                            placeholder="Password"
-                            value={addUser.password} 
-                            onChange={inputChange}
-                        />
-                        {error ? (<p className="inputError">{error.password}</p>) : null}
-                    </div>
-                    <div>
-                        <input
-                            name="url"
-                            type="text"
-                            placeholder="Url image"
-                            value={addUser.url} 
-                            onChange={inputChange}
-                        />
-                        {error ? (<p className="inputError">{error.url}</p>) : null}
-                    </div>
-                    <div>
-                        <select value={addUser.country} onChange={inputChange} >
-                            <option value="value">Choose your Country</option>
-                            {countries.map((country, index) => <option key={index} value={"value"}>{country}</option>)}
-                        </select>
-                        {error ? (<p className="inputError">{error.country}</p>) : null}
-                    </div>
+                    
+                </div>
                     <div className="buttonsForm">
                         <button className="btnForm" onClick={submitData}>Sign Up</button>
-                        <button className="btnForm">Sign Up with Google</button>
+                        <GoogleLogin
+                            className="btnGoogle"
+                            clientId="1089874556679-9h3m7uo8a9kkoc1ofepgo4jnouufr12t.apps.googleusercontent.com"
+                            buttonText="Sign up with Google"
+                            onSuccess={responseGoogle}
+                            onFailure={responseGoogle}
+                            cookiePolicy={'single_host_origin'}
+                        />,
                     </div>
-                </div>
+                    <div className="linkRedirect">
+                        <p>Already have an account?</p>
+                        <Link to="/login">Log In here!</Link>
+                    </div>
             </form>
                 <div>
                     <img src="/assets/signUp.png" alt="usuer"/>
