@@ -33,23 +33,22 @@ const usersControllers = {
     },
 
     enterUser : async (req, res) => {
-        console.log('hola soy enter user')
         const { email, password, signInGoogle } = req.body
         try {
             let registeredUser = await User.findOne({email: email})
             if (registeredUser) {
-                if(registeredUser.google && !signInGoogle) throw new Error ('You create account with Google, please sign in with them')
+                if(registeredUser.google && !signInGoogle) {res.json({success: false, error: 'You create account with Google, please sign in with them'})}
                 if(bcryptjs.compareSync(password, registeredUser.password)) {
                     const token = jwt.sign({...registeredUser}, process.env.SECRETORKEY)
                     res.json({success: true, response: {name: registeredUser.name, url: registeredUser.url, token}})
                 } else {
-                    throw new Error ('Incorrect email or password')
+                    res.json({success: false, response: 'Incorrect email or password'}) 
                 }
             } else {
-                throw new Error ('Incorrect email or password')
+                res.json({success: false, response: 'Incorrect email or password'})
             }
         } catch(error){
-            res.json({success: false, error: error.message})
+            res.json({success: false, response: 'Something went wrong, try again later'})
         }
     },
 

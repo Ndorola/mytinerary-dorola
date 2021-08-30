@@ -12,8 +12,6 @@ const FormSignIn = (props) => {
             password: ""
         })
     
-        const [error, setError] = useState(null)
-    
         const inputChange = (e) => {
             setAddUser({
                 ...addUser,
@@ -24,11 +22,19 @@ const FormSignIn = (props) => {
 
         const submitData = async (e) => {
             e.preventDefault()
-            console.log(error)
-            console.log('hola')
-            let response = await props.signIn(addUser)
-            if(!response.data.success) {
-                setError(response.data.error)
+            try {
+                if (Object.keys(addUser).some((property) => addUser[property] === "")) {
+                    alert("All fields are required")
+                    return false
+                }
+                let response = await props.signIn(addUser)
+                if(!response.data.success) {
+                    if(response.data.response === 'You create account with Google, please sign in with them') {alert(response.data.response)} 
+                    if(response.data.response === 'Incorrect email or password') {alert(response.data.response)} 
+                    }
+                }
+            catch (error) {
+                alert('Incorrect email or password')
             }
         }
 
@@ -38,13 +44,14 @@ const FormSignIn = (props) => {
                 password: response.profileObj.googleId,
                 signInGoogle: true
             }
-            let res = await props.signIn(userGoogle)
-            if(!res.data.success) {
-                setError(res.data.error)
-            }  
+            try {
+                await props.signIn(userGoogle)
+            } catch (error) {
+                console.log('Authentication Error')
+                alert('Authentication Error')
+            }
         }
 
-        
 
     return  (
         <div className="mainForm">
@@ -59,7 +66,6 @@ const FormSignIn = (props) => {
                             placeholder="Enter your email"
                             onChange={inputChange}
                         />
-                        {error && error.find(err => err.path[0]==="email") && <p className="inputError">{error.find(err => err.path[0]==="email").message}</p>}
                     </div>
                     <div>
                         <input
@@ -68,7 +74,6 @@ const FormSignIn = (props) => {
                             placeholder="Password"
                             onChange={inputChange}
                         />
-                        {error && error.find(err => err.path[0]==="password") && <p className="inputError">{error.find(err => err.path[0]==="password").message}</p>}
                     </div>
                     
                     <div className="buttonsForm">
@@ -89,7 +94,7 @@ const FormSignIn = (props) => {
                 </div>
             </form>
                 <div>
-                    <img src="/assets/signUp.png" alt="usuer"/>
+                    <img className="imgLog" src="/assets/signUp.png" alt="usuer"/>
                 </div>
         </div>
     )

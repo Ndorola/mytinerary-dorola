@@ -3,47 +3,47 @@ import axios from "axios";
 const userActions = {
 
     signIn: (addUser) => {
-        console.log("lo que sea")
         return async (dispatch) => {
-        let respuesta = await axios.post(
-            "http://localhost:4000/api/users/signin",
-            { ...addUser }
-        );
-        console.log(respuesta)
-        if (respuesta.data.success) {
-            dispatch({
-            type: "SIGNIN_INTO_SISTEM",
-            payload: {
-                token: respuesta.data.response.token,
-                name: respuesta.data.response.name,
-                url: respuesta.data.response.url
+        
+            try {
+                let response = await axios.post("http://localhost:4000/api/users/signin", { ...addUser })           
+                if (response.data.success) {
+                    dispatch({
+                    type: "SIGNIN_INTO_SISTEM",
+                    payload: {
+                        token: response.data.response.token,
+                        name: response.data.response.name,
+                        url: response.data.response.url
+                    }
+                    })
+                    alert('you are logged')
+                } else {
+                    throw new Error ('Authentication Error'),
+                    console.log('Authentication Error')
+                }
+            } catch (error) {
+                console.log(error.message)
             }
-            });
         }
-        return respuesta;
-        };
     },
     
     signUp: (addUser) => {
-    
+        console.log('entre al action de ')
         return async (dispatch, getState) => {
-        let respuesta = await axios.post(
-            "http://localhost:4000/api/users/signup",
-            { ...addUser }
-        );
+        let response = await axios.post("http://localhost:4000/api/users/signup", { ...addUser });
 
-        if (respuesta.data.success) {
+        if (response.data.success) {
             dispatch({
             type: "SIGNIN_INTO_SISTEM",
             payload: {
-                token: respuesta.data.response.token,
-                name: respuesta.data.response.name,
-                url: respuesta.data.response.url
+                token: response.data.response.token,
+                name: response.data.response.name,
+                url: response.data.response.url
             },
             });
         }
-
-        return respuesta;
+        console.log('salgoooo')
+        return response;
         };
     },
 
@@ -56,13 +56,12 @@ const userActions = {
     signInLS: (token) => {
         return async (dispatch, getState) => {
         try {
-            let respuesta = await axios.get('http://localhost:4000/api/verifytoken', {
+            let response = await axios.get('http://localhost:4000/api/verifytoken', {
                 headers: {
                 Authorization: 'Bearer ' + token
                 }
             })
-            console.log(respuesta)
-            dispatch({ type: "SIGNIN_INTO_SISTEM", payload: { token: token , name: respuesta.data.name, url: respuesta.data.url} });
+            dispatch({ type: "SIGNIN_INTO_SISTEM", payload: { token: token , name: response.data.name, url: response.data.url} });
             } catch(error) {
                 console.log('texto')
             return dispatch({type: 'LOG_OUT'})

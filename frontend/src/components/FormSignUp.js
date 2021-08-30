@@ -28,33 +28,31 @@ const FormSignUp = (props) => {
     }
     
     console.log(addUser)
-    // useEffect(() => {
-    //     console.log(props.countries)
-    //     async function getCountries() {
-    //         try{
-    //             await props.getCountries()
-    //         } catch(error) {
-    //             console.log(error)
-    //         }
-    //     }
-    //     getCountries()
-    // } ,[])
+
+    
 
     var countries = ["Argentina", "Bahamas", "Barbados", "Belize", "Bolivia", "Brazil", "Canada", "Chile", "Colombia", "Costa Rica", "Cuba", "Dominica", " Ecuador "," El Salvador "," United States "," Granada "," Guatemala "," Guyana "," Haiti "," Honduras "," Jamaica "," Mexico "," Nicaragua "," Panama "," Paraguay "," Peru "," Dominican Republic "," Santa Lucia "," Surinam "," Uruguay "," Venezuela "]
 
     const submitData = async (e) => {
         e.preventDefault()
-        console.log(error)
-        console.log('hola')
-        let response = await props.signUp(addUser)
-        if(!response.data.success) {
-            setError(response.data.error)
-        }       
-        // if (Object.keys(addUser).some((property) => addUser[property] === "")) {
-        //     alert("All fields are required")
-        //     return false
-        // }
+        try {
+            if (Object.keys(addUser).some((property) => addUser[property] === "")) {
+                    alert("All fields are required")
+                    return false
+                }
+                let response = await props.signUp(addUser)
+                console.log(response.data)
+            if(!response.data.success) {
+                if(response.data.response === 'This user is already registered') {
+                    alert(response.data.response)
+                } else {
+                    setError(response.data.error)   
+                }
+            }
+        } catch(error) {
+            console.log('Something went wrong, try again later')
     }
+}
     
     const responseGoogle = async (response) => {
         let addUserGoogle = {
@@ -63,6 +61,7 @@ const FormSignUp = (props) => {
             email: response.profileObj.email,
             url: response.profileObj.imageUrl,
             password: response.profileObj.googleId,
+            country:'google',
             google: true
         }
         let res = await props.signUp(addUserGoogle)
@@ -155,7 +154,7 @@ const FormSignUp = (props) => {
                     </div>
             </form>
                 <div>
-                    <img src="/assets/signUp.png" alt="usuer"/>
+                    <img className="imgLog" src="/assets/signUp.png" alt="usuer"/>
                 </div>
         </div>
     )
