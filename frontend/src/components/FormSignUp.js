@@ -36,10 +36,10 @@ const FormSignUp = (props) => {
     const submitData = async (e) => {
         e.preventDefault()
         try {
-            if (Object.keys(addUser).some((property) => addUser[property] === "")) {
-                    alert("All fields are required")
-                    return false
-                }
+            // if (Object.keys(addUser).some((property) => addUser[property] === "")) {
+            //         alert("All fields are required")
+            //         return false
+            //     }
                 let response = await props.signUp(addUser)
                 console.log(response.data)
             if(!response.data.success) {

@@ -11,6 +11,18 @@ const itinerariesActions = {
                     console.log('Ups! The server is down')
                 }
         }
+    },
+
+    getActivities: (id) => {
+        return async (dispatch) => {
+                let response = await axios.get('http://localhost:4000/api/activities/' + id)
+                let data = response.data.response
+                return data
+                // if (!response.data.success) {
+                //     throw new Error ('Ups! The server is down'),
+                //     console.log('Ups! The server is down')
+                // }
+        }
     }
 }
 

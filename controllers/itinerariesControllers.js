@@ -94,6 +94,8 @@ const itinerariesControllers = {
             res.json({success: false, response: "No results found"})
         }
     }
+
+    
 }
 
 module.exports = itinerariesControllers

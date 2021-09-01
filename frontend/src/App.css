@@ -503,7 +503,7 @@ header{
 .itMain {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 70vh;
     /* background-color: whitesmoke; */
     margin-top: 3%;
     margin-bottom: 2%;
@@ -591,6 +591,7 @@ button.btnGoogle {
     align-items: center;
     width: 70%;
     padding-left: 4%;
+    margin-bottom: 4%;
 }
 
 .itIcons {
@@ -643,26 +644,99 @@ button.btnGoogle {
 
 .under {
     display: flex;
-    justify-content: center;
+    /* flex-direction: column; */
+    /* justify-content: space-between; */
     align-items: center;
+    width: 100%;
 }
 
 .under img {
     width: 40%;
 }
 
+.titleActivities{
+    text-align: center;
+    flex: 1;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 2rem;
+    color: rgb(245, 153, 0);
+}
+
 .itButton {
     padding: 4.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
+
+.activitiesBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: cyan; */
+}
+
+.commentsBox {
+    background-color: darkgoldenrod;
+    border: solid 2px rgb(245, 153, 0);
+    flex: 1;
+    height: 60vh;
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.363);
+}
+.containerComments {
+    flex: 1;
+}
+
+.divInput {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 2%;
+}
+
+.inputComment {
+    width: 80%;
+    border: none;
+    border-radius: 20px;
+    padding: 2%;
+    text-align: center;
+}
+
+.btnLike {
+    border: none;
+    background-color: white;
+}
+
+#polaroid3 {
+    position: absolute;
+    padding-top: 18%;
+}
+
+.picsAct {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
 }
 
 .wrapper {
-    width: 60%;
+    /* width: 50%; */
     padding: 0 2rem;
     text-align: center;
-    position: absolute;
+    /* position: absolute; */
     z-index: 2;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-bottom: 20%;
+    /* flex-direction: column; */
   }
   .polaroid {
     background: #fff;
@@ -1325,6 +1399,7 @@ button.btnGoogle {
 
     .iconsBox {
         width: 100%;
+        
     }
 
     /* .imgLog {

@@ -6,7 +6,7 @@ const userActions = {
         return async (dispatch) => {
         
             try {
-                let response = await axios.post("http://localhost:4000/api/users/signin", { ...addUser })           
+                let response = await axios.post("http://localhost:4000/api/uses/signin", { ...addUser })           
                 if (response.data.success) {
                     dispatch({
                     type: "SIGNIN_INTO_SISTEM",

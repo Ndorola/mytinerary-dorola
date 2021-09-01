@@ -34,7 +34,8 @@ const FormSignIn = (props) => {
                     }
                 }
             catch (error) {
-                alert('Incorrect email or password')
+                alert('hubo un problema vuelva mas tarde')
+                //api caida
             }
         }
 

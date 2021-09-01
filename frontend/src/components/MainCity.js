@@ -73,7 +73,7 @@ const MainCity = (props) => {
                     <h2 className="titleCity">Welcome to {props.city.name}</h2>
                 </div>
             </div>
-            {(itineraries.length !== 0) ? itineraries.map((itinerary, index) => <Itinerary key={index} it={itinerary}/>)
+            {(itineraries.length !== 0) ? itineraries.map((itinerary, index) => <Itinerary key={index} city={props.city.name} it={itinerary}/>)
                 : <div className="ups">
                     <img src="/assets/ups.png"/>
                     <h3 className="sorry">Sorry, this city has no itineraries. Back to home!</h3>

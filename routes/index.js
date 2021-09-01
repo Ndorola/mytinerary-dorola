@@ -2,6 +2,7 @@ const express = require('express')
 const citiesControllers = require('../controllers/citiesControllers')
 const itinerariesControllers = require('../controllers/itinerariesControllers')
 const usersControllers = require('../controllers/usersControllers')
+const activitiesControllers = require('../controllers/activitiesControllers')
 const router = express.Router()
 const passport = require("passport")
 const validator = require('../controllers/validator')
@@ -44,6 +45,22 @@ router
 router
 .route('/verifytoken')
 .get(passport.authenticate('jwt', {session: false}), usersControllers.verifytoken)
+
+router
+.route('/activities')
+.get(activitiesControllers.getAllActivities)
+.post(activitiesControllers.enterActivity)
+.put(activitiesControllers.modifyActivities)
+
+router
+.route('/activity/:id')
+.get(activitiesControllers.getActivity)
+.delete(activitiesControllers.deleteActivity)
+.put(activitiesControllers.modifyActivity)
+
+router
+.route('/activities/:id')
+.get(activitiesControllers.getActivityByIt)
 
 module.exports = router
 

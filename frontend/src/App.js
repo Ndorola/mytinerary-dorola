@@ -12,11 +12,6 @@ import { useEffect } from "react"
 
 const App = (props) => {
 
-  // useEffect(() => {
-  //   if(localStorage.getItem('token')) {
-  //     props.signInLS(localStorage.getItem('token'), localStorage.getItem('name'), localStorage.getItem('url'))
-  //   }
-  // } ,[])
   useEffect(() => {
     if(localStorage.getItem('token')) {
       props.signInLS(localStorage.getItem('token'))
