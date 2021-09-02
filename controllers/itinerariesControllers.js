@@ -1,5 +1,6 @@
 const { response } = require('express')
 const Itinerary = require('../models/Itinerary')
+const User = require('../models/User')
 
 const itinerariesControllers = {
 
@@ -24,6 +25,7 @@ const itinerariesControllers = {
             price: req.body.price,
             time: req.body.time,
             likes: req.body.likes,
+            likesCount: req.body.likesCount,
             comments: req.body.comments,
             images: req.body.img,
             cityId: req.body.cityId
@@ -88,14 +90,33 @@ const itinerariesControllers = {
     getItinerariesByCity: async (req, res) => {
         const city = req.params.city
         try {
-            let itineraries = await Itinerary.find({cityId: city})
+            var itineraries = await Itinerary.find({cityId: city})
             res.json({success: true, response: itineraries})
         } catch(error) {
             res.json({success: false, response: "No results found"})
         }
-    }
+    },
 
+    addLike: async (req, res) => {
+        try {
+            var likes = await Itinerary.findOneAndUpdate({_id: req.params.id}, {$push: {likes: req.body}})
+            res.json({success: true, response: likes})
+            console.log(likes)
+        } catch (error) {
+            res.json({success: false, pesponse: error})
+        }
+    },
     
+    updateComments: async (req, res) => {
+            
+        try {
+            var pushComments = await Itinerary.findOneAndUpdate({_id: req.params.id}, {$push: {comments: req.body.comments}})
+            res.json({success: true, response: pushComments})
+        } catch (error) {
+            res.json({success: false, response: error})
+        }
+    },
+
 }
 
 module.exports = itinerariesControllers

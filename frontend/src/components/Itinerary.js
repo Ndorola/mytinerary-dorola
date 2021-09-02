@@ -63,6 +63,9 @@ const Itinerary = (props) => {
 
     const changeIcon = liked ? <FcLike/> : <FcLikePlaceholder/>
 
+    // const giveLike = () => {
+
+    // }
 
     return (
             <>      

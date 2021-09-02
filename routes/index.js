@@ -31,6 +31,14 @@ router
 .put(itinerariesControllers.modifyItinerary)
 
 router
+.route('/itinerary/likes/:likeId')
+.put(itinerariesControllers.addLike)
+
+router
+.route('/itinerary/comments/:id')
+.put(itinerariesControllers.updateComments)
+
+router
 .route('/itineraries/:city')
 .get(itinerariesControllers.getItinerariesByCity)
 
@@ -61,6 +69,8 @@ router
 router
 .route('/activities/:id')
 .get(activitiesControllers.getActivityByIt)
+
+
 
 module.exports = router
 
