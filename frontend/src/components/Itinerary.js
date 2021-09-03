@@ -5,30 +5,27 @@ import { FcClock } from "react-icons/fc"
 import { FcLikePlaceholder } from "react-icons/fc"
 import { FcLike } from "react-icons/fc"
 import Activities from "./Activities"
+import Comment from "./Comment"
 import { connect } from "react-redux";
-
 import Loader from "./Loader"
 import Swal from 'sweetalert';
 import itinerariesActions from "../redux/actions/itinerariesAction"
 
 const Itinerary = (props) => {
-    // console.log(props)
+    console.log(props)
     const [activities, setActivities] = useState({activities: []})
-    
     const [loading, setLoading] = useState(true)
-
     const [visible, setVisible] = useState(false)
-
-    const [liked, setLiked] = useState(false)
-
     
     const it = props.it
     const city = props.city
 
+    const [liked, setLiked] = useState(it.likes)
+    const [likedColor, setLikedColor] = useState(false)
+    
     const icons = [1, 2, 3, 4, 5]
     let quantityIcons  = icons.splice(0,it.price)
 
-    
     useEffect(() => {
         if(visible) {
             async function getActivities() {
@@ -57,15 +54,29 @@ const Itinerary = (props) => {
         setVisible(!visible)
     }
 
-    const toggleLike = () => {
-        liked ? setLiked(false) : setLiked(true)
+    const toggleLike = async () => {
+        if (!props.token){
+            alert('te tenes que loguear')
+        } else {
+            try {
+                let response = await props.addLike(props.it._id, props.token)
+                if(response.success) {
+                    setLiked(response.response)
+                    setLikedColor(true)
+                } else {
+                    throw new Error ('no funciono')
+                }
+            } catch (error) {
+                console.log(error)
+            }
+            
+        }
+
+        // liked ? setLiked(false) : setLiked(true)
     }
 
     const changeIcon = liked ? <FcLike/> : <FcLikePlaceholder/>
-
-    // const giveLike = () => {
-
-    // }
+    // const changeIcon = liked.includes(it._id) ? <FcLike/> : <FcLikePlaceholder/>
 
     return (
             <>      
@@ -97,7 +108,7 @@ const Itinerary = (props) => {
                                 </div>
                                 <div className="itIcons">
                                     <button className="btnLike" onClick={toggleLike}>{changeIcon}</button>
-                                    <p>{it.likes}</p>
+                                    <p>{liked.length}</p>
                                 </div>
                             </div>
                         </div>
@@ -110,6 +121,7 @@ const Itinerary = (props) => {
                                         <h2 className="titleActivities">Activities to do in {city}</h2>
                                     </div>
                                     <div className="under">
+                                        <Comment itId={it._id} comments={it.comments}/>
                                         <Activities activities={activities}/>
                                     </div>
                                 </div>
@@ -124,8 +136,16 @@ const Itinerary = (props) => {
                 )
             }
 
-const mapDispatchToProps = {
-    getActivities: itinerariesActions.getActivities,
+const mapStateToProps = state => {
+    return {
+        token: state.users.token
+    }
 }
 
-export default connect (null, mapDispatchToProps) (Itinerary)
+const mapDispatchToProps = {
+    getActivities: itinerariesActions.getActivities,
+    addLike: itinerariesActions.addLike,
+    addComment: itinerariesActions.addComment,
+}
+
+export default connect (mapStateToProps, mapDispatchToProps) (Itinerary)

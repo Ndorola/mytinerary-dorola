@@ -736,8 +736,13 @@ button.btnGoogle {
     justify-content: center;
     align-items: flex-start;
     padding-bottom: 20%;
-    /* flex-direction: column; */
+    flex-direction: column;
   }
+
+  .wrapper img{
+    width: 30%;
+  }
+
   .polaroid {
     background: #fff;
     padding: 1rem;

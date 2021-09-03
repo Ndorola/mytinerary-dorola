@@ -31,12 +31,13 @@ router
 .put(itinerariesControllers.modifyItinerary)
 
 router
-.route('/itinerary/likes/:likeId')
-.put(itinerariesControllers.addLike)
+.route('/itinerary/likes/:id')
+.put(passport.authenticate('jwt', {session: false}),itinerariesControllers.addLike)
 
 router
 .route('/itinerary/comments/:id')
-.put(itinerariesControllers.updateComments)
+.get(itinerariesControllers.sendComment)
+.put(itinerariesControllers.sendComment)
 
 router
 .route('/itineraries/:city')

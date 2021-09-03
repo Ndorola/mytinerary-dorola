@@ -8,6 +8,7 @@ import Itinerary from "./Itinerary";
 
 
 const MainCity = (props) => {
+    console.log(props)
 
     const [loading, setLoading] = useState(true)
 

@@ -6,14 +6,15 @@ const userActions = {
         return async (dispatch) => {
         
             try {
-                let response = await axios.post("http://localhost:4000/api/uses/signin", { ...addUser })           
+                let response = await axios.post("http://localhost:4000/api/users/signin", { ...addUser })           
                 if (response.data.success) {
                     dispatch({
                     type: "SIGNIN_INTO_SISTEM",
                     payload: {
                         token: response.data.response.token,
                         name: response.data.response.name,
-                        url: response.data.response.url
+                        url: response.data.response.url,
+                        userId: response.data.response.userId
                     }
                     })
                     alert('you are logged')
@@ -61,7 +62,7 @@ const userActions = {
                 Authorization: 'Bearer ' + token
                 }
             })
-            dispatch({ type: "SIGNIN_INTO_SISTEM", payload: { token: token , name: response.data.name, url: response.data.url} });
+            dispatch({ type: "SIGNIN_INTO_SISTEM", payload: { token: token , name: response.data.name, url: response.data.url, userId:response.data.userId} });
             } catch(error) {
                 console.log('texto')
             return dispatch({type: 'LOG_OUT'})

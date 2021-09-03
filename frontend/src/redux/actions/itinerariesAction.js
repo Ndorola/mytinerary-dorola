@@ -25,21 +25,36 @@ const itinerariesActions = {
         }
     },
 
-    addLike: (id, value) => {
+    addLike: (itId, token) => {
         return async (dispatch) => {
             try {
-                let response = await axios.put(`http://localhost:4000/api/itinerary/likes/${id}`, value)
-                return response
+                let response = await axios.put(`http://localhost:4000/api/itinerary/likes/${itId}`,{} ,
+                {
+                    headers:{
+                        Authorization: 'Bearer ' + token
+                    }
+                })
+                if(response.data.success){
+                    console.log(response.data.response)
+                    return({success:true, response: response.data.response})
+                } else {
+                    console.log(response.data.response)
+                    return({success: false})
+                }
+
             } catch (error) {
-                console.log(error)
+                return({success:false, response:error.message})
             }
         }
     },
 
-    addComment: (id, comment) => {
+    addComment: (id, comment, token) => {
         return async () => {
             try {
-                let response = await axios.put(`http://localhost:4000/api/itinerary/comments/${id}`, comment)
+                let response = await axios.put(`http://localhost:4000/api/itinerary/comments/${id}`, {comment, 
+                headers:{
+                    Authorization: 'Bearer ' +token
+                }})
                 return response
             } catch (error) {
                 console.log(error)

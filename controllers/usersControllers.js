@@ -40,7 +40,7 @@ const usersControllers = {
                 if(registeredUser.google && !signInGoogle) {res.json({success: false, error: 'You create account with Google, please sign in with them'})}
                 if(bcryptjs.compareSync(password, registeredUser.password)) {
                     const token = jwt.sign({...registeredUser}, process.env.SECRETORKEY)
-                    res.json({success: true, response: {name: registeredUser.name, url: registeredUser.url, token}})
+                    res.json({success: true, response: {name: registeredUser.name, url: registeredUser.url, token, userId:registeredUser._id}})
                 } else {
                     res.json({success: false, response: 'Incorrect email or password'}) 
                 }
@@ -54,7 +54,7 @@ const usersControllers = {
 
     verifytoken: (req, res) => {
         console.log(req.user)
-        res.json({name: req.user.name, url: req.user.url})
+        res.json({userId: req.user._id, name: req.user.name, url: req.user.url})
     }
 }
 

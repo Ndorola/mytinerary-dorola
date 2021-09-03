@@ -1,4 +1,4 @@
-const { response } = require('express')
+const { response, request } = require('express')
 const Itinerary = require('../models/Itinerary')
 const User = require('../models/User')
 
@@ -90,7 +90,7 @@ const itinerariesControllers = {
     getItinerariesByCity: async (req, res) => {
         const city = req.params.city
         try {
-            var itineraries = await Itinerary.find({cityId: city})
+            var itineraries = await Itinerary.find({cityId: city}).populate({path:"comments.userId", select:"url name"})
             res.json({success: true, response: itineraries})
         } catch(error) {
             res.json({success: false, response: "No results found"})
@@ -99,23 +99,56 @@ const itinerariesControllers = {
 
     addLike: async (req, res) => {
         try {
-            var likes = await Itinerary.findOneAndUpdate({_id: req.params.id}, {$push: {likes: req.body}})
-            res.json({success: true, response: likes})
-            console.log(likes)
+            let itinerary = await Itinerary.findOne({_id: req.params.id})
+            if(itinerary.likes.includes(req.user._id)){
+                let dontLike = await Itinerary.findOneAndUpdate({_id: req.params.id}, {$pull: {likes: req.user._id}}, {new: true})
+                console.log(res)
+                res.json({success: true, response: dontLike.likes})
+                console.log(dontLike.likes)
+            } else {
+                let like = await Itinerary.findOneAndUpdate({_id: req.params.id}, {$push: {likes: req.user._id}}, {new: true})
+                console.log(res)
+                res.json({success: true, response: like.likes})
+                console.log(like.likes)
+            }
         } catch (error) {
-            res.json({success: false, pesponse: error})
+            console.log(error)
         }
+        
     },
     
-    updateComments: async (req, res) => {
-            
+    sendComment: async (req, res) => {
+        Itinerary.findOneAndUpdate({ _id: req.params.id}, {$push: {comments: {comment: req.body.comment, userId: req.body.userId}}}, {new: true}).populate({path:"comments.userId", select:"url name"})
+        .then((itinerary) => res.json({ success: true, response: itinerary.comments}))
+        .catch((error) => res.json({ success: false, response: error}));
+    },
+
+    // sendComment: async (req, res) => {
+    //     try {
+    //         var pushComments = await Itinerary.findOneAndUpdate({_id: req.params.id}, {$push: {comments: req.body.mod.object}})
+    //         if(pushComments){
+    //             res.json({success: true, response: pushComments})
+    //         }else {
+    //             throw new Error ('no match')
+    //         }
+    //     } catch (error) {
+    //         res.json({success: false, response: error.message})
+    //     }
+    // },
+
+    deletComment: async (req, res) => {
         try {
-            var pushComments = await Itinerary.findOneAndUpdate({_id: req.params.id}, {$push: {comments: req.body.comments}})
-            res.json({success: true, response: pushComments})
+            var deletComments = await Itinerary.findOneAndUpdate({_id: req.params.id}, {$pull: {_id: req.body.commentId}})
+            if(deletComments){
+                res.json({success: true, response: deletComments})
+            }else {
+                throw new Error ('no match')
+            }
         } catch (error) {
-            res.json({success: false, response: error})
+            res.json({success: false, response: error.message})
         }
     },
+
 
 }
 
