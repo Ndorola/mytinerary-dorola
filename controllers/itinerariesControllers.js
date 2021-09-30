@@ -123,19 +123,6 @@ const itinerariesControllers = {
         .catch((error) => res.json({ success: false, response: error}));
     },
 
-    // sendComment: async (req, res) => {
-    //     try {
-    //         var pushComments = await Itinerary.findOneAndUpdate({_id: req.params.id}, {$push: {comments: req.body.mod.object}})
-    //         if(pushComments){
-    //             res.json({success: true, response: pushComments})
-    //         }else {
-    //             throw new Error ('no match')
-    //         }
-    //     } catch (error) {
-    //         res.json({success: false, response: error.message})
-    //     }
-    // },
-
     deletComment: async (req, res) => {
         try {
             var deletComments = await Itinerary.findOneAndUpdate({_id: req.params.id}, {$pull: {_id: req.body.commentId}})

@@ -9,6 +9,7 @@ import SignIn from "./components/SignIn"
 import { connect } from "react-redux";
 import userActions from "./redux/actions/usersActions"
 import { useEffect } from "react"
+import Playground from "./components/Playground"
 
 const App = (props) => {
 
@@ -26,6 +27,7 @@ const App = (props) => {
           <Route path="/city/:id" component={City}/>
           {!props.token && <Route path="/signup" component={SignUp}/>}
           {!props.token && <Route path="/signin" component={SignIn}/>}
+          <Route path="/playground" component={Playground}/>
           <Route path="/notfound" component={NotFound}/>
           {props.token ? <Redirect to="/"/> : <Redirect to="/notfound"/> }
         </Switch>
